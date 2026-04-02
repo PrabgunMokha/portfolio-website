@@ -1,9 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Prabgun Mokha - Backend AI Engineer</title>
+<title>Prabgun Mokha | Aspiring AI & Backend Engineer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
@@ -32,6 +34,61 @@
   --radius-lg: 20px;
   --shadow-soft: 0 18px 60px rgba(76, 121, 173, 0.12);
   --shadow-hover: 0 24px 70px rgba(76, 121, 173, 0.18);
+}
+
+/* TERMINAL COMPONENT */
+.terminal-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  font-family: 'DM Mono', monospace;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.terminal-header {
+  background: #323232;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-title {
+  color: #999;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.terminal-body {
+  padding: 20px;
+  color: #d1d1d1;
+  font-size: 13px;
+  min-height: 220px;
+  line-height: 1.6;
+}
+
+.t-user { color: #27c93f; font-weight: 500; }
+.t-cmd { color: #fff; }
+.t-output { color: #aaa; margin-bottom: 8px; }
+.t-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #2f80ff;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -67,7 +124,7 @@ textarea:focus-visible {
   outline-offset: 3px;
 }
 
-/* â”€â”€ CANVAS BG â”€â”€ */
+/* CANVAS BG */
 #bg-canvas {
   position: fixed;
   inset: 0;
@@ -80,7 +137,7 @@ textarea:focus-visible {
   z-index: 1;
 }
 
-/* â”€â”€ NAV â”€â”€ */
+/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -150,7 +207,7 @@ nav.scrolled { padding: 14px 48px; }
   background: linear-gradient(135deg, #2172f5, #00b4f0) !important;
 }
 
-/* â”€â”€ HERO â”€â”€ */
+/* HERO */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -351,29 +408,46 @@ nav.scrolled { padding: 14px 48px; }
   margin-top: 4px;
 }
 
-.hero-tags-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  box-shadow: var(--shadow-soft);
+.mini-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.hero-tag-pill {
-  font-size: 12px;
-  padding: 7px 14px;
-  border-radius: 40px;
-  border: 1px solid rgba(47,128,255,0.14);
-  color: var(--text);
+.mini-proof-card {
   background: rgba(255,255,255,0.78);
-  letter-spacing: 0.05em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.mini-proof-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+}
+
+.mini-proof-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.mini-proof-value {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.mini-proof-copy {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .scroll-indicator {
@@ -405,7 +479,7 @@ nav.scrolled { padding: 14px 48px; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* â”€â”€ SECTION COMMON â”€â”€ */
+/* SECTION COMMON */
 section {
   padding: 120px 48px;
 }
@@ -441,7 +515,7 @@ section {
   font-weight: 400;
 }
 
-/* â”€â”€ ABOUT â”€â”€ */
+/* ABOUT */
 #about { background: transparent; }
 
 .about-grid {
@@ -459,15 +533,6 @@ section {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-}
-
-.about-text-block::after {
-  content: '';
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(124,106,255,0.08), transparent 70%);
-  border-radius: 50%;
 }
 
 .about-badge {
@@ -547,6 +612,45 @@ section {
   box-shadow: var(--shadow-soft);
 }
 
+.publication-card {
+  background:
+    radial-gradient(circle at top right, rgba(47,128,255,0.12), transparent 38%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.publication-kicker {
+  font-size: 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.publication-title {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+}
+
+.publication-copy {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.publication-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .focus-card-title {
   font-size: 11px;
   color: var(--text-dim);
@@ -579,7 +683,7 @@ section {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
 }
 
-/* â”€â”€ SKILLS â”€â”€ */
+/* SKILLS */
 #skills { background: rgba(255,255,255,0.42); }
 
 .skills-grid {
@@ -675,7 +779,7 @@ section {
 
 .cert-meta span:first-child { color: var(--accent); }
 
-/* â”€â”€ PROJECTS â”€â”€ */
+/* PROJECTS */
 #projects { background: transparent; }
 
 .projects-subtitle {
@@ -690,7 +794,183 @@ section {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
+}
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.project-spotlight {
+  position: sticky;
+  top: 108px;
+  background:
+    radial-gradient(circle at top right, rgba(47,128,255,0.18), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,250,255,0.92));
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: var(--shadow-hover);
+  overflow: hidden;
+}
+
+.project-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.22), transparent 55%);
+  pointer-events: none;
+}
+
+.spotlight-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.spotlight-kicker::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent2);
+  box-shadow: 0 0 0 8px rgba(47,128,255,0.08);
+}
+
+.spotlight-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.spotlight-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 0.95;
+  letter-spacing: -1.6px;
+}
+
+.spotlight-emoji {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 28px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 16px 30px rgba(76, 121, 173, 0.12);
+}
+
+.spotlight-subtitle {
+  margin-top: 8px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.spotlight-role {
+  margin-top: 18px;
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(47,128,255,0.08);
+  border: 1px solid rgba(47,128,255,0.14);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.spotlight-desc {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+
+.spotlight-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.spotlight-metric {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.spotlight-metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+.spotlight-metric-value {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.spotlight-tags {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spotlight-actions {
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.projects-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.projects-meta-card {
+  background: rgba(255,255,255,0.78);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.projects-meta-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+.projects-meta-value {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 25px;
+  letter-spacing: -0.8px;
+}
+
+.projects-meta-copy {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .filter-btn {
@@ -731,6 +1011,7 @@ section {
   overflow: hidden;
   cursor: default;
   box-shadow: var(--shadow-soft);
+  transform-style: preserve-3d;
 }
 
 .project-card::before {
@@ -751,6 +1032,16 @@ section {
 }
 
 .project-card:hover::before { transform: scaleX(1); }
+
+.project-card.active {
+  border-color: transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, var(--proj-color, var(--accent)), rgba(255,255,255,0.85)) border-box;
+  box-shadow: 0 24px 70px rgba(76, 121, 173, 0.22);
+}
+
+.project-card.active::before { transform: scaleX(1); }
 
 .proj-header {
   display: flex;
@@ -787,62 +1078,11 @@ section {
   color: var(--text-muted);
 }
 
-.proj-badge {
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 40px;
-  background: rgba(47,128,255,0.10);
-  border: 1px solid rgba(47,128,255,0.18);
-  color: var(--accent);
-  white-space: nowrap;
-  letter-spacing: 0.05em;
-}
-
-.proj-role {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-}
-
-.proj-role::before {
-  content: '•';
-  color: var(--proj-color, var(--accent));
-}
-
 .proj-desc {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.75;
   margin-bottom: 20px;
-}
-
-.proj-highlights {
-  list-style: none;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.proj-highlights.visible { display: flex; }
-
-.proj-highlights li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.proj-highlights li::before {
-  content: '›';
-  color: var(--proj-color, var(--accent));
-  flex-shrink: 0;
-  margin-top: 1px;
 }
 
 .proj-tags {
@@ -862,26 +1102,43 @@ section {
   font-family: var(--font-body);
 }
 
-.proj-toggle {
-  font-family: var(--font-body);
-  font-size: 12px;
-  color: #fff;
-  background: var(--proj-color, var(--accent));
-  border: 1px solid transparent;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  padding: 10px 16px;
+.proj-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
   border-radius: 999px;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  box-shadow: 0 10px 24px rgba(47,128,255,0.22);
+  border: 1px solid rgba(47,128,255,0.14);
+  background: rgba(255,255,255,0.7);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
 }
 
-.proj-toggle:hover {
-  opacity: 1;
+.btn-ghost:hover {
   transform: translateY(-2px);
+  border-color: rgba(47,128,255,0.28);
+  background: rgba(47,128,255,0.08);
 }
 
-/* â”€â”€ EDUCATION â”€â”€ */
+.proj-actions .btn-primary,
+.proj-actions .btn-ghost {
+  flex: 1 1 160px;
+}
+
+/* EDUCATION */
 #education { background: rgba(255,255,255,0.42); }
 
 .edu-stack {
@@ -971,7 +1228,7 @@ section {
   color: var(--text-muted);
 }
 
-/* â”€â”€ CONTACT â”€â”€ */
+/* CONTACT */
 #contact { background: transparent; }
 
 .contact-wrap {
@@ -1091,21 +1348,6 @@ section {
   color: var(--accent);
 }
 
-.contact-icon {
-  width: 44px; height: 44px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-
 /* Contact Form */
 .contact-form {
   background: var(--surface);
@@ -1181,7 +1423,6 @@ section {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(47,128,255,0.10);
 }
-.form-select option { background: #ffffff; color: var(--text); }
 
 .form-submit {
   width: 100%;
@@ -1214,8 +1455,6 @@ section {
   line-height: 1.6;
 }
 
-.form-notice strong { color: var(--accent); font-weight: 400; }
-
 .form-success {
   display: none;
   text-align: center;
@@ -1224,24 +1463,7 @@ section {
 
 .form-success.visible { display: block; }
 
-.success-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
-}
-
-.success-text {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.success-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-/* â”€â”€ FOOTER â”€â”€ */
+/* FOOTER */
 footer {
   background: rgba(255,255,255,0.56);
   border-top: 1px solid var(--border);
@@ -1266,7 +1488,7 @@ footer {
   color: var(--text-muted);
 }
 
-/* â”€â”€ FADE IN ANIMATIONS â”€â”€ */
+/* FADE IN ANIMATIONS */
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -1278,7 +1500,7 @@ footer {
   transform: translateY(0);
 }
 
-/* â”€â”€ RESPONSIVE â”€â”€ */
+/* RESPONSIVE */
 @media (max-width: 960px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -1291,7 +1513,16 @@ footer {
 
   .about-grid,
   .skills-grid,
+  .projects-layout,
   .contact-wrap { grid-template-columns: 1fr; }
+
+  .mini-proof-grid,
+  .projects-meta { grid-template-columns: 1fr 1fr; }
+
+  .project-spotlight {
+    position: static;
+    top: auto;
+  }
 
   .edu-card { grid-template-columns: 1fr; }
   .edu-meta { align-items: flex-start; flex-direction: row; gap: 16px; }
@@ -1306,11 +1537,15 @@ footer {
   .hero-panel { flex-direction: column; }
   .stat-row { grid-template-columns: 1fr; }
   .hero-name { letter-spacing: -2px; }
+  .mini-proof-grid,
+  .projects-meta,
+  .spotlight-metrics { grid-template-columns: 1fr; }
   .contact-me-panel,
   .contact-form,
   .about-text-block,
   .skills-block,
   .edu-card,
+  .project-spotlight,
   .project-card { padding: 24px; }
 }
 </style>
@@ -1337,42 +1572,59 @@ footer {
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-tag fade-up">Open to Backend & AI Opportunities</div>
-      <h1 class="hero-name fade-up">Hi, I'm<br/><em>Prabgun Mokha</em></h1>
+      <div class="hero-tag fade-up">Aspiring Backend & AI Engineer</div>
+      <h1 class="hero-name fade-up">Building Scalable<br/><em>AI & Backend Systems</em></h1>
       <div class="hero-role-wrap fade-up">
         <p class="hero-role" id="typed-role"></p>
         <div class="hero-cursor-blink"></div>
       </div>
       <p class="hero-bio fade-up">
-        I build intelligent backend systems with <strong>Python & FastAPI</strong>,
-        <strong>AI integration</strong>, and <strong>cybersecurity-focused engineering</strong>.
-        I focus on reliable APIs, strong architecture, and practical AI solutions
-        that solve real-world problems with <strong>confidence and analytical precision</strong>.
+        I am a developer focused on bridging the gap between <strong>intelligent AI models</strong> and <strong>high-performance backends</strong>. 
+        I aim to build resilient, data-driven applications using FastAPI, practical machine learning, and cybersecurity-first engineering.
       </p>
       <div class="hero-actions fade-up">
-        <a href="#projects" class="btn-primary">View Projects ↓</a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
+        <a href="#projects" class="btn-primary">Explore My Work</a>
+        <a href="./PRABGUN-MOKHA-CV.pdf" class="btn-outline" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Resume
+        </a>
       </div>
     </div>
 
     <div class="hero-panel fade-up">
-      <div class="hero-stat-card">
-        <div class="stat-value">8<span>+</span></div>
-        <div class="stat-label">Projects Built</div>
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span style="background: #ff5f56;"></span>
+            <span style="background: #ffbd2e;"></span>
+            <span style="background: #27c93f;"></span>
+          </div>
+          <div class="terminal-title">bash — 80x24</div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cmd">ls skills/</span></div>
+          <div class="terminal-line t-output">backend/ ai_agents/ cybersecurity/ ml_ops/</div>
+          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cmd">cat about.txt</span></div>
+          <div class="terminal-line t-output">"Engineering intelligent systems with precision."</div>
+          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cursor"></span></div>
+        </div>
       </div>
-      <div class="hero-stat-card">
-        <div class="stat-value">3<span>+</span></div>
-        <div class="stat-label">Tech Domains</div>
+      
+      <div class="hero-stat-card" style="margin-top: 16px;">
+        <div class="stat-value">Secure</div>
+        <div class="stat-label">Backend, AI, and Cybersecurity Focus</div>
       </div>
-      <div class="hero-tags-card">
-        <div class="focus-card-title">Core Stack</div>
-        <div class="hero-tags">
-          <span class="hero-tag-pill">Python</span>
-          <span class="hero-tag-pill">FastAPI</span>
-          <span class="hero-tag-pill">LangGraph</span>
-          <span class="hero-tag-pill">ML / AI</span>
-          <span class="hero-tag-pill">PostgreSQL</span>
-          <span class="hero-tag-pill">Cybersecurity</span>
+
+      <div class="mini-proof-grid">
+        <div class="mini-proof-card">
+          <div class="mini-proof-label">Current Focus</div>
+          <div class="mini-proof-value">FastAPI + AI</div>
+          <div class="mini-proof-copy">Building backend-heavy AI tools with security, data flow, and usability in mind.</div>
+        </div>
+        <div class="mini-proof-card">
+          <div class="mini-proof-label">Build Style</div>
+          <div class="mini-proof-value">Hands-On</div>
+          <div class="mini-proof-copy">Focused on practical tools, clean APIs, and projects that solve clear problems.</div>
         </div>
       </div>
     </div>
@@ -1387,64 +1639,69 @@ footer {
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <span class="section-label fade-up">Who I Am</span>
-    <h2 class="section-title fade-up">About <em>Me</em></h2>
+    <span class="section-label fade-up">The Narrative</span>
+    <h2 class="section-title fade-up">Engineering <em>with Intent</em></h2>
 
     <div class="about-grid">
       <div class="about-text-block fade-up">
         <div class="about-badge">
           <span class="about-badge-dot"></span>
-          AIDS Engineering @ ADGIPS, GGSIPU
+          AI & Data Science @ GGSIPU
         </div>
         <p class="about-para">
-          I'm <strong>Prabgun Mokha</strong> - an AIDS engineering student and backend-focused AI engineer
-          who enjoys learning, collaborating, and solving real-world problems with analytical rigour
-          and a <strong>problem-solving mindset</strong>.
+          I don't just write code; I design <strong>resilient architectures</strong>. 
+          As an AIDS engineering student, I've cultivated a deep obsession with how data moves 
+          and how AI can be harnessed to solve complex, non-trivial problems.
         </p>
         <p class="about-para">
-          I work on <strong>AI and cybersecurity projects</strong>, document intelligence tools,
-          and multi-agent AI systems, with a strong interest in Data Science and
-          <strong>data-driven decision making</strong>.
+          My work sits at the intersection of <strong>Intelligent Systems</strong> and <strong>Robust Backends</strong>. 
+          Whether it's building document intelligence APIs, secure scanning tools, or data pipelines, 
+          my focus is always on <strong>scalability, security, and measurable impact</strong>.
         </p>
         <p class="about-para">
-          Currently an <strong>Artificial Intelligence Intern at Sukrit Technologies Pvt. Ltd.</strong>
-          (since February 2026), growing practical experience in AI applications and
-          enterprise-grade backend systems.
-        </p>
-        <p class="about-para">
-          I approach every problem with <strong>confidence</strong>, clear analytical thinking,
-          and a commitment to delivering reliable, production-quality work.
+          Currently, I'm gaining practical experience as an <strong>Artificial Intelligence Intern at Sukrit Technologies</strong>, 
+          learning to translate research concepts into functional tools.
         </p>
       </div>
 
       <div class="about-right fade-up">
         <div class="stat-row">
           <div class="stat-box">
-            <div class="num">8+</div>
-            <div class="lbl">Projects Built</div>
-          </div>
-          <div class="stat-box">
-            <div class="num">3+</div>
-            <div class="lbl">Tech Domains</div>
+            <div class="num">6</div>
+            <div class="lbl">Projects Contributed</div>
           </div>
           <div class="stat-box">
             <div class="num">5+</div>
-            <div class="lbl">Certifications</div>
+            <div class="lbl">Expert Certifications</div>
           </div>
           <div class="stat-box">
-            <div class="num">100%</div>
-            <div class="lbl">Self-Driven</div>
+            <div class="num">16+</div>
+            <div class="lbl">Security Patterns Explored</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">1</div>
+            <div class="lbl">Research Publication</div>
           </div>
         </div>
         <div class="focus-card">
-          <div class="focus-card-title">Focus Areas</div>
+          <div class="focus-card-title">Technical Domains</div>
           <div class="tag-cloud">
-            <span class="tag">Data Science</span>
-            <span class="tag">Artificial Intelligence</span>
-            <span class="tag">Cybersecurity</span>
-            <span class="tag">Problem Solving</span>
-            <span class="tag">Backend Systems</span>
-            <span class="tag">Analytics</span>
+            <span class="tag">Document Intelligence</span>
+            <span class="tag">FastAPI Architecture</span>
+            <span class="tag">Threat Intelligence</span>
+            <span class="tag">Big Data Pipelines</span>
+            <span class="tag">Secure Automation</span>
+            <span class="tag">ML Deployment</span>
+          </div>
+        </div>
+        <div class="publication-card">
+          <div class="publication-kicker">Publication</div>
+          <div class="publication-title">AI-Driven Cybersecurity Research</div>
+          <p class="publication-copy">
+            A published paper exploring AI-driven cybersecurity trends and practical security applications, released in December 2025.
+          </p>
+          <div class="publication-actions">
+            <a href="./prabgun-mokha-journal.pdf" class="btn-primary" target="_blank" rel="noopener noreferrer">Read Paper</a>
           </div>
         </div>
       </div>
@@ -1498,12 +1755,14 @@ footer {
           <div class="cert-item">
             <div class="cert-title">R Language for Data Analysis</div>
             <div class="cert-meta">
+              <span>Udemy</span>
               <span>Jul 25, 2025</span>
             </div>
           </div>
           <div class="cert-item">
             <div class="cert-title">Introduction to HTML & CSS</div>
             <div class="cert-meta">
+              <span>Udemy</span>
               <span>Aug 10, 2024</span>
             </div>
           </div>
@@ -1518,7 +1777,25 @@ footer {
   <div class="container">
     <span class="section-label fade-up">What I've Built</span>
     <h2 class="section-title fade-up">Featured <em>Projects</em></h2>
-    <p class="projects-subtitle fade-up">A selection of personal and collaborative projects spanning AI, cybersecurity, and data engineering</p>
+    <p class="projects-subtitle fade-up">Interactive highlights from projects across AI, backend engineering, cybersecurity, and data workflows.</p>
+
+    <div class="projects-meta fade-up">
+      <div class="projects-meta-card">
+        <div class="projects-meta-label">Portfolio Snapshot</div>
+        <div class="projects-meta-value" id="project-count">6 Projects</div>
+        <div class="projects-meta-copy">A compact set of work focused on real functionality, not placeholder demos.</div>
+      </div>
+      <div class="projects-meta-card">
+        <div class="projects-meta-label">Current Filter</div>
+        <div class="projects-meta-value" id="active-filter-label">All</div>
+        <div class="projects-meta-copy">Use the filters below to explore by discipline.</div>
+      </div>
+      <div class="projects-meta-card">
+        <div class="projects-meta-label">Selected Build</div>
+        <div class="projects-meta-value" id="selected-project-label">CyberTwin</div>
+        <div class="projects-meta-copy">Click any card to update the live project spotlight.</div>
+      </div>
+    </div>
 
     <div class="filters fade-up" id="filter-bar">
       <button class="filter-btn active" data-filter="All">All</button>
@@ -1528,7 +1805,45 @@ footer {
       <button class="filter-btn" data-filter="Data">Data</button>
     </div>
 
-    <div class="projects-grid fade-up" id="projects-grid"></div>
+    <div class="projects-layout">
+      <aside class="project-spotlight fade-up" id="project-spotlight">
+        <div class="spotlight-kicker">Live Project Spotlight</div>
+        <div class="spotlight-title-row">
+          <div>
+            <div class="spotlight-title" id="spotlight-title">CyberTwin</div>
+            <div class="spotlight-subtitle" id="spotlight-subtitle">Network Intelligence Platform</div>
+          </div>
+          <div class="spotlight-emoji" id="spotlight-emoji">C</div>
+        </div>
+        <div class="spotlight-role" id="spotlight-role">Backend & Security Aspirant</div>
+        <p class="spotlight-desc" id="spotlight-desc">A digital twin project for real-time network threat detection.</p>
+
+        <div class="spotlight-metrics">
+          <div class="spotlight-metric">
+            <div class="spotlight-metric-label">Challenge</div>
+            <div class="spotlight-metric-value" id="spotlight-problem"></div>
+          </div>
+          <div class="spotlight-metric">
+            <div class="spotlight-metric-label">Solution</div>
+            <div class="spotlight-metric-value" id="spotlight-solution"></div>
+          </div>
+        </div>
+
+        <div class="spotlight-metric" style="margin-top:12px;">
+          <div class="spotlight-metric-label">Impact</div>
+          <div class="spotlight-metric-value" id="spotlight-impact"></div>
+        </div>
+
+        <div class="spotlight-tags" id="spotlight-tags"></div>
+
+        <div class="spotlight-actions">
+          <a href="https://github.com/Aaram-Over-Kaam/Cybertwin.git" target="_blank" rel="noopener noreferrer" class="btn-primary" id="spotlight-link">Open Repository</a>
+          <a href="#contact" class="btn-ghost">Discuss This Build</a>
+        </div>
+      </aside>
+
+      <div class="projects-grid fade-up" id="projects-grid"></div>
+    </div>
   </div>
 </section>
 
@@ -1593,17 +1908,19 @@ footer {
               <span class="contact-method-value">prabgunmokha@gmail.com</span>
               <span class="contact-method-link">Write a mail</span>
             </a>
+            <a class="contact-method" href="https://github.com/prabgunmokha" target="_blank" rel="noopener noreferrer">
+              <span class="contact-method-icon" style="background:linear-gradient(135deg, #333, #666)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </span>
+              <span class="contact-method-label">GitHub</span>
+              <span class="contact-method-value">prabgunmokha</span>
+              <span class="contact-method-link">View Repositories</span>
+            </a>
             <a class="contact-method" href="https://in.linkedin.com/in/prabgun-mokha-538477291" target="_blank" rel="noopener noreferrer">
               <span class="contact-method-icon" style="background:linear-gradient(135deg, #2f80ff, #00c2ff)">in</span>
               <span class="contact-method-label">LinkedIn</span>
               <span class="contact-method-value">prabgun-mokha-538477291</span>
               <span class="contact-method-link">Open profile</span>
-            </a>
-            <a class="contact-method" href="https://instagram.com/p_pvt.05" target="_blank" rel="noopener noreferrer">
-              <span class="contact-method-icon" style="background:linear-gradient(135deg, #ff5c8a, #ff9b54)">IG</span>
-              <span class="contact-method-label">Instagram</span>
-              <span class="contact-method-value">@p_pvt.05</span>
-              <span class="contact-method-link">View Instagram</span>
             </a>
           </div>
         </div>
@@ -1640,7 +1957,6 @@ footer {
             <button type="submit" class="form-submit">Send Message</button>
           </form>
           <p class="form-notice">
-            This form collects your name, contact info, and message reason.<br/>
             Your message will be sent to <strong>prabgunmokha@gmail.com</strong> via your email client.
           </p>
         </div>
@@ -1735,14 +2051,62 @@ resize();
 initStars();
 drawStars();
 
-// â”€â”€ NAV SCROLL â”€â”€
+// TERMINAL LOGIC
+const terminalBody = document.getElementById('terminal-body');
+const terminalLines = [
+  { cmd: 'ls aspirations/', output: 'backend_eng/ ai_specialist/ multi_agent_ai/ secure_architecture/' },
+  { cmd: 'cat goals.txt', output: '"Building the future of intelligent, secure systems."' },
+  { cmd: 'whoami', output: 'prabgun_mokha (Aspiring Backend & AI Engineer)' },
+  { cmd: 'ping delhi_hq', output: 'Status: Active | Readiness: 100% | Interest: Backend & AI' }
+];
+let lineIdx = 0;
+
+function runTerminal() {
+  const line = terminalLines[lineIdx];
+  const lineDiv = document.createElement('div');
+  lineDiv.className = 'terminal-line';
+  lineDiv.innerHTML = `<span class="t-user">guest@prabgun:~$</span> <span class="t-cmd"></span>`;
+  terminalBody.insertBefore(lineDiv, terminalBody.lastElementChild);
+  
+  const cmdSpan = lineDiv.querySelector('.t-cmd');
+  let charIdx = 0;
+  
+  function typeCmd() {
+    if (charIdx < line.cmd.length) {
+      cmdSpan.textContent += line.cmd[charIdx++];
+      setTimeout(typeCmd, 50 + Math.random() * 50);
+    } else {
+      const outDiv = document.createElement('div');
+      outDiv.className = 'terminal-line t-output';
+      outDiv.textContent = line.output;
+      terminalBody.insertBefore(outDiv, terminalBody.lastElementChild);
+      
+      lineIdx = (lineIdx + 1) % terminalLines.length;
+      setTimeout(runTerminal, 2500);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+      
+      if (terminalBody.children.length > 10) {
+        terminalBody.removeChild(terminalBody.children[0]);
+        terminalBody.removeChild(terminalBody.children[0]);
+      }
+    }
+  }
+  setTimeout(typeCmd, 500);
+}
+
+setTimeout(() => {
+  terminalBody.innerHTML = '<div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cursor"></span></div>';
+  runTerminal();
+}, 1000);
+
+// NAV SCROLL
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-// â”€â”€ TYPED ROLE â”€â”€
-const roles = ['Backend AI Engineer', 'FastAPI Developer', 'AI Systems Builder', 'Data Scientist'];
+// TYPED ROLE
+const roles = ['Aspiring AI Engineer', 'Backend Enthusiast', 'FastAPI Builder', 'Data Science Student'];
 let ri = 0, ci = 0, del = false, roleEl = document.getElementById('typed-role');
 function typeRole() {
   const word = roles[ri];
@@ -1757,51 +2121,157 @@ function typeRole() {
 }
 typeRole();
 
-// â”€â”€ PROJECTS DATA â”€â”€
+// PROJECTS DATA
 const projects = [
-  { id:'cybertwin', title:'CyberTwin', subtitle:'Cybersecurity Intelligence Platform', emoji:'🛡️', role:'Data Pipeline & Database', group:true, desc:'A production-ready digital twin for real-time network threat detection. Uses ML to classify 10 attack categories from the UNSW-NB15 dataset. Includes live network topology, incident dashboard, and auto-generated remediation playbooks.', highlights:['ML inference on UNSW-NB15 dataset - 10 attack categories','Real-time risk scoring with composite weight system','FastAPI modular backend with nodes, incidents & scenarios APIs','Live network topology + incident management dashboard','Configured infrastructure: PostgreSQL, deployment setup, env management'], tags:['Python','Data Pipeline','PostgreSQL','ML/AI'], color:'#ef4444', cats:['AI/ML','Backend','Cybersecurity'] },
-  { id:'securescans', title:'SecureScan AI', subtitle:'Threat Intelligence Engine', emoji:'🔍', role:'Solo Project', group:false, desc:'A Streamlit-powered security dashboard scanning data inputs for 16+ threat patterns across credentials, PII, financial data, network vulnerabilities, and code injections. Generates instant risk scores and downloadable remediation reports.', highlights:['16 regex-based threat detection patterns across 6 categories','Real-time risk scoring (0-100) with gauge + donut charts','Pattern categories: credentials, PII, financial, network, code, malware','Severity-tiered findings: Critical, High, Medium, Low','Downloadable full threat-analysis report with remediation tips'], tags:['Python','Streamlit','Plotly','Regex','Cybersecurity'], color:'#10b981', cats:['Cybersecurity'] },
-  { id:'idvalidator', title:'ID Validator Service', subtitle:'Indian Document Intelligence API', emoji:'🪪', role:'Contributor', group:false, desc:'A production-grade FastAPI REST API for classifying and extracting data from Indian identity documents. Uses YOLO models for document classification and PaddleOCR for field extraction.', highlights:['Supports Aadhaar, PAN, Voter ID, Passport, Driving License','Auto orientation correction (0, 90, 180, 270 degrees)','Confidence-based validation with configurable threshold','JSON-structured logging with trace IDs per request','Refactored pipeline, fixed runtime errors, enhanced error codes'], tags:['FastAPI','YOLO','PaddleOCR','Python','REST API','ML/AI'], color:'#6366f1', cats:['AI/ML','Backend'] },
-  { id:'langgraph', title:'LangGraph Issue Solver', subtitle:'Multi-Agent GitHub Issue Resolver', emoji:'🤖', role:'Solo Project', group:false, desc:'A LangGraph multi-agent system that autonomously solves GitHub issues through a Supervisor -> Researcher -> Coder -> Tester pipeline. SSE-streamed events feed a real-time dark-themed web UI served from FastAPI.', highlights:['LangGraph StateGraph with 4 specialized agents','Researcher reads codebase, Coder writes fixes, Tester runs pytest','Supervisor routes back to Coder if tests fail - iterative loop','Server-Sent Events (SSE) for real-time step streaming','Beautiful dark UI served from FastAPI - no separate frontend server'], tags:['Python','LangGraph','FastAPI','LangChain','SSE','LLM'], color:'#8b5cf6', cats:['AI/ML','Backend'] },
-  { id:'password', title:'Password Secured File API', subtitle:'File Encryption & Protection Service', emoji:'🔐', role:'Solo Project', group:false, desc:'A FastAPI backend for password-protecting and unlocking PDF and image files. Applies AES encryption, streams the protected file to the client, and auto-deletes temporary files after 10 minutes.', highlights:['Supports PDF, JPG, PNG, BMP, TIFF, GIF, WebP formats','Image-to-PDF conversion before encryption via Pillow','AES-based PDF encryption compatible with Edge/Chrome','Auto-deletion of temp files after 10 minutes (background tasks)','REST endpoints: /protect, /unlock, /download/{file_id}'], tags:['FastAPI','Python','PyPDF2','AES Encryption','Pillow','REST API'], color:'#f59e0b', cats:['Backend'] },
-  { id:'ecommerce', title:'E-Commerce Data Pipeline', subtitle:'Big Data Processing with Apache Spark', emoji:'🛒', role:'Solo Project', group:false, desc:'An Apache Spark-powered end-to-end big data pipeline for e-commerce event data. Handles cleaning, feature engineering with implicit engagement scores, and Parquet/CSV export.', highlights:['Apache Spark session with Snappy Parquet compression','Missing value handling, duplicate removal, price validation','Timestamp parsing + month/day-of-week feature extraction','Implicit engagement scoring: purchase x5, cart x3, view x1','User-product aggregated features exported to Parquet & CSV'], tags:['Apache Spark','Python','PySpark','Parquet','Data Engineering'], color:'#06b6d4', cats:['Data'] },
-  { id:'portscan', title:'Nmap Port Scanner GUI', subtitle:'Multi-threaded Network Scanning Tool', emoji:'📡', role:'Solo Project', group:false, desc:'A Python Tkinter GUI application for multi-threaded port scanning. Uses a semaphore-controlled thread pool to scan port ranges concurrently and identifies 13+ common services.', highlights:['Thread pool with semaphore concurrency control (100 workers)','Live result streaming via thread-safe queue + Tkinter polling','Identifies 13 common services by port number','Stop/start scan controls with real-time progress bar','Cross-platform - pure Python stdlib (socket, threading, tkinter)'], tags:['Python','Tkinter','Networking','Threading','Nmap','Sockets'], color:'#ec4899', cats:['Cybersecurity'] },
-  { id:'pdfagent', title:'AI Data Agent', subtitle:'PDF & CSV Intelligent Q&A System', emoji:'📄', role:'Solo Project', group:false, desc:'A Streamlit + FastAPI application letting users ask natural language questions about PDF documents and CSV datasets. Powered by Groq LLM (Llama 3.3-70B) with real-time streaming responses.', highlights:['Groq LLM (Llama 3.3-70B) for document Q&A','Handles both PDF and CSV data sources','FastAPI backend with /query and /health endpoints','Space-themed Streamlit UI with glassmorphism & nebula glows','Suggestion cards for guided first-time interaction'], tags:['Python','Streamlit','FastAPI','Groq','LLM','RAG'], color:'#f97316', cats:['AI/ML','Data'] },
+  {
+    id:'cybertwin',
+    title:'CyberTwin',
+    subtitle:'Network Intelligence Platform',
+    emoji:'C',
+    role:'Backend & Security Aspirant',
+    desc:'A digital twin project for real-time network threat detection.',
+    problem:'Detecting complex network attacks requires integrated data and real-time analysis.',
+    solution:'Built a FastAPI backend integrating ML inference on the UNSW-NB15 dataset.',
+    impact:'Capable of identifying 10 attack categories with live playbooks.',
+    tags:['Python','PostgreSQL','ML/AI'],
+    color:'#ef4444',
+    cats:['AI/ML','Backend','Cybersecurity'],
+    github: 'https://github.com/Aaram-Over-Kaam/Cybertwin.git'
+  },
+  {
+    id:'fortify-docs-api',
+    title:'Fortify Docs API',
+    subtitle:'Indian Document Intelligence API',
+    emoji:'F',
+    role:'API & CV Integration',
+    desc:'Service for high-precision extraction from Indian identity documents.',
+    problem:'Traditional KYC processes are manual and error-prone.',
+    solution:'Utilized YOLO for classification and PaddleOCR for data extraction.',
+    impact:'Supports 5 major Indian ID types with automated validation.',
+    tags:['FastAPI','YOLO','PaddleOCR','Python','OCR'],
+    color:'#6366f1',
+    cats:['AI/ML','Backend'],
+    github: 'https://github.com/PrabgunMokha/Fortify-Docs-API.git'
+  },
+  {
+    id:'securescans',
+    title:'SecureScan AI',
+    subtitle:'Threat Scanning Tool',
+    emoji:'S',
+    role:'Security Tool Builder',
+    desc:'Dashboard for scanning PII and security threats in data.',
+    problem:'Users often leak sensitive data in unstructured inputs.',
+    solution:'Developed a scanning engine for 16+ threat patterns and risk scoring.',
+    impact:'Real-time risk assessment and remediation reporting.',
+    tags:['Python','Regex','Cybersecurity'],
+    color:'#10b981',
+    cats:['Cybersecurity'],
+    github: 'https://github.com/PrabgunMokha/securescans-ai.git'
+  },
+  {
+    id:'ecommerce',
+    title:'E-commerce Data Pipeline',
+    subtitle:'Big Data Processing with Apache Spark',
+    emoji:'E',
+    role:'Data Engineering',
+    desc:'An Apache Spark-powered end-to-end big data pipeline for e-commerce event data.',
+    problem:'Handling large volumes of e-commerce data requires robust processing and feature engineering.',
+    solution:'Implemented Spark for data cleaning, feature extraction (engagement scores), and Parquet/CSV export.',
+    impact:'Transforms raw event data into structured features for downstream recommendation algorithms.',
+    tags:['Apache Spark','Python','PySpark','Data Engineering'],
+    color:'#06b6d4',
+    cats:['Data'],
+    github: 'https://github.com/PrabgunMokha/ecommerce-recommendation-system.git'
+  },
+  {
+    id:'portscan-gui',
+    title:'Nmap Port Scanner GUI',
+    subtitle:'Multi-threaded Network Scanning Tool',
+    emoji:'N',
+    role:'Security Tool Development',
+    desc:'A Python Tkinter GUI application for multi-threaded port scanning.',
+    problem:'Efficiently identifying open ports and services on a target machine can be complex without a user-friendly interface.',
+    solution:'Developed a Tkinter GUI with a semaphore-controlled thread pool to scan port ranges concurrently.',
+    impact:'Provides a visual, interactive tool for network reconnaissance and security auditing, identifying common services.',
+    tags:['Python','Tkinter','Networking','Threading'],
+    color:'#ec4899',
+    cats:['Cybersecurity'],
+    github: 'https://github.com/PrabgunMokha/Network-Port-Scanner-GUI.git'
+  },
+  {
+    id:'file-reader',
+    title:'File Reader',
+    subtitle:'Secure File Access & Management',
+    emoji:'R',
+    role:'Security Focused Development',
+    desc:'A system for secure password-protected file access, encryption, and temporary file management.',
+    problem:'Managing sensitive files securely with easy access controls is crucial but often complex.',
+    solution:'Developed a FastAPI backend to handle AES encryption/decryption, PDF/image protection, and timed auto-deletion of temporary files.',
+    impact:'Ensures confidential data remains protected while offering flexible, temporary access.',
+    tags:['FastAPI', 'Python', 'AES Encryption', 'PyPDF2'],
+    color:'#f59e0b',
+    cats:['Backend', 'Cybersecurity'],
+    github: 'https://github.com/PrabgunMokha/File-Reader.git'
+  }
 ];
 
 let activeFilter = 'All';
-let expanded = null;
+let selectedProjectId = projects[0].id;
+
+function updateProjectSpotlight(project) {
+  document.getElementById('spotlight-title').textContent = project.title;
+  document.getElementById('spotlight-subtitle').textContent = project.subtitle;
+  document.getElementById('spotlight-emoji').textContent = project.emoji;
+  document.getElementById('spotlight-role').textContent = project.role;
+  document.getElementById('spotlight-desc').textContent = project.desc;
+  document.getElementById('spotlight-problem').textContent = project.problem;
+  document.getElementById('spotlight-solution').textContent = project.solution;
+  document.getElementById('spotlight-impact').textContent = project.impact;
+  document.getElementById('spotlight-link').href = project.github;
+  document.getElementById('selected-project-label').textContent = project.title;
+  document.getElementById('spotlight-tags').innerHTML = project.tags.map(tag => `<span class="proj-tag">${tag}</span>`).join('');
+}
 
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
   const visible = activeFilter === 'All' ? projects : projects.filter(p => p.cats.includes(activeFilter));
+  const selectedVisibleProject = visible.find(project => project.id === selectedProjectId) || visible[0];
+
+  if (selectedVisibleProject) {
+    selectedProjectId = selectedVisibleProject.id;
+    updateProjectSpotlight(selectedVisibleProject);
+  }
+
+  document.getElementById('project-count').textContent = `${visible.length} Project${visible.length === 1 ? '' : 's'}`;
+  document.getElementById('active-filter-label').textContent = activeFilter;
 
   grid.innerHTML = visible.map(p => `
-    <article class="project-card" style="--proj-color:${p.color}" data-id="${p.id}">
+    <article class="project-card ${p.id === selectedProjectId ? 'active' : ''}" data-project-id="${p.id}" style="--proj-color:${p.color}">
       <div class="proj-header">
         <div class="proj-emoji">${p.emoji}</div>
         <div class="proj-meta">
           <div class="proj-title">${p.title}</div>
           <div class="proj-subtitle">${p.subtitle}</div>
         </div>
-        ${p.group ? '<span class="proj-badge">Group</span>' : ''}
       </div>
-      <div class="proj-role">${p.role}</div>
-      <p class="proj-desc">${p.desc}</p>
-      <ul class="proj-highlights ${expanded === p.id ? 'visible' : ''}">
-        ${p.highlights.map(h => `<li>${h}</li>`).join('')}
-      </ul>
-      <div class="proj-tags">${p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}</div>
-      <button class="proj-toggle" onclick="toggleExpand('${p.id}')">
-        ${expanded === p.id ? 'Less details' : 'More details'}
-      </button>
+      <div class="proj-desc">${p.desc}</div>
+      <div class="proj-desc">
+        <p><strong>Challenge:</strong> ${p.problem}</p>
+        <p style="margin-top:8px;"><strong>Solution:</strong> ${p.solution}</p>
+        <p style="margin-top:8px; color:var(--text); font-weight:500;"><strong>Focus:</strong> ${p.impact}</p>
+      </div>
+      <div class="proj-tags">
+        ${p.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}
+      </div>
+      <div class="proj-actions">
+        <button type="button" class="btn-ghost" data-spotlight="${p.id}">Spotlight</button>
+        <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%; justify-content:center;">
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+           View Repository
+        </a>
+      </div>
     </article>
   `).join('');
-}
-
-function toggleExpand(id) {
-  expanded = expanded === id ? null : id;
-  renderProjects();
 }
 
 document.getElementById('filter-bar').addEventListener('click', e => {
@@ -1810,40 +2280,60 @@ document.getElementById('filter-bar').addEventListener('click', e => {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   activeFilter = btn.dataset.filter;
-  expanded = null;
   renderProjects();
 });
 
 renderProjects();
 
-// â”€â”€ INTERSECTION OBSERVER â”€â”€
+document.getElementById('projects-grid').addEventListener('click', e => {
+  const spotlightTrigger = e.target.closest('[data-spotlight]');
+  const card = e.target.closest('.project-card');
+  const projectId = (spotlightTrigger && spotlightTrigger.dataset.spotlight) || (card && card.dataset.projectId);
+
+  if (!projectId) return;
+
+  const project = projects.find(item => item.id === projectId);
+  if (!project) return;
+
+  selectedProjectId = project.id;
+  renderProjects();
+});
+
+document.getElementById('projects-grid').addEventListener('mousemove', e => {
+  const card = e.target.closest('.project-card');
+  if (!card || window.innerWidth < 961) return;
+
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const rotateX = ((y / rect.height) - 0.5) * -7;
+  const rotateY = ((x / rect.width) - 0.5) * 7;
+  card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+document.getElementById('projects-grid').addEventListener('mouseleave', () => {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.style.transform = '';
+  });
+});
+
+// INTERSECTION OBSERVER
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
+}, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-// â”€â”€ CONTACT FORM â”€â”€
+// CONTACT FORM
 function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const name = form.name.value;
-  const contact = form.contact.value;
-  const reason = form.reason.value;
-  const message = form.message.value;
-
-  const subject = encodeURIComponent(`Portfolio Contact: ${reason} from ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nContact: ${contact}\nReason: ${reason}\n\nMessage:\n${message}`);
-  const mailto = `mailto:prabgunmokha@gmail.com?subject=${subject}&body=${body}`;
-
-  window.location.href = mailto;
-
-  // Show success
+  const subject = encodeURIComponent(`Contact from ${form.name.value}`);
+  const body = encodeURIComponent(`Name: ${form.name.value}\nReason: ${form.reason.value}\n\nMessage:\n${form.message.value}`);
+  window.location.href = `mailto:prabgunmokha@gmail.com?subject=${subject}&body=${body}`;
   document.getElementById('form-body').style.display = 'none';
-  const succ = document.getElementById('form-success');
-  succ.classList.add('visible');
+  document.getElementById('form-success').classList.add('visible');
 }
 </script>
 </body>
