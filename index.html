@@ -367,6 +367,38 @@ nav.scrolled { padding: 14px 48px; }
   flex-wrap: wrap;
 }
 
+.recruiter-strip {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 650px;
+}
+
+.recruiter-pill {
+  border: 1px solid rgba(47,128,255,0.14);
+  background: rgba(255,255,255,0.78);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 28px rgba(76,121,173,0.08);
+}
+
+.recruiter-pill strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.recruiter-pill span {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -1834,7 +1866,8 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
   .contact-wrap { grid-template-columns: 1fr; }
 
   .mini-proof-grid,
-  .projects-meta { grid-template-columns: 1fr 1fr; }
+  .projects-meta,
+  .recruiter-strip { grid-template-columns: 1fr 1fr; }
 
   .project-spotlight {
     position: static;
@@ -1856,7 +1889,8 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
   .hero-name { letter-spacing: -2px; }
   .mini-proof-grid,
   .projects-meta,
-  .spotlight-metrics { grid-template-columns: 1fr; }
+  .spotlight-metrics,
+  .recruiter-strip { grid-template-columns: 1fr; }
   .contact-me-panel,
   .contact-form,
   .about-text-block,
@@ -1894,21 +1928,35 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-tag fade-up">Aspiring Backend & AI Engineer</div>
-      <h1 class="hero-name fade-up">Building Scalable<br/><em>AI & Backend Systems</em></h1>
+      <h1 class="hero-name fade-up">Python Backend<br/><em>AI Engineering Intern</em></h1>
       <div class="hero-role-wrap fade-up">
         <p class="hero-role" id="typed-role"></p>
         <div class="hero-cursor-blink"></div>
       </div>
       <p class="hero-bio fade-up">
-        I am a developer focused on bridging the gap between <strong>intelligent AI models</strong> and <strong>high-performance backends</strong>. 
-        I aim to build resilient, data-driven applications using FastAPI, practical machine learning, and cybersecurity-first engineering.
+        I build practical backend and AI tools with <strong>Python, FastAPI, LangGraph, and cybersecurity workflows</strong>. 
+        My focus is simple: understand the system, ship working features, document clearly, and keep improving with every project.
       </p>
       <div class="hero-actions fade-up">
         <a href="#projects" class="btn-primary">Explore My Work</a>
-        <a href="./PRABGUN-MOKHA-CV.pdf" class="btn-outline" target="_blank" rel="noopener noreferrer">
+        <a href="./Prabgun_Mokha_Resume_Minimal.pdf" class="btn-outline" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Download Resume
+          Download Updated Resume
         </a>
+      </div>
+      <div class="recruiter-strip fade-up">
+        <div class="recruiter-pill">
+          <strong>AI Intern</strong>
+          <span>Sukrit Technologies, Feb-Jul 2026</span>
+        </div>
+        <div class="recruiter-pill">
+          <strong>Backend Focus</strong>
+          <span>FastAPI, APIs, automation, data flow</span>
+        </div>
+        <div class="recruiter-pill">
+          <strong>Proof Ready</strong>
+          <span>Resume, certificates, GitHub projects</span>
+        </div>
       </div>
     </div>
 
@@ -1964,14 +2012,13 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
           AI & Data Science @ GGSIPU
         </div>
         <p class="about-para">
-          I don't just write code; I design <strong>resilient architectures</strong>. 
-          As an AIDS engineering student, I've cultivated a deep obsession with how data moves 
-          and how AI can be harnessed to solve complex, non-trivial problems.
+          I am an AI & Data Science student building practical depth in <strong>Python backends, AI tooling, and secure software workflows</strong>. 
+          I learn best by turning ideas into working systems, then reading the code closely enough to explain and improve it.
         </p>
         <p class="about-para">
-          My work sits at the intersection of <strong>Intelligent Systems</strong> and <strong>Robust Backends</strong>. 
-          Whether it's building document intelligence APIs, secure scanning tools, or data pipelines, 
-          my focus is always on <strong>scalability, security, and measurable impact</strong>.
+          My work sits at the intersection of <strong>intelligent systems</strong> and <strong>backend engineering</strong>. 
+          Whether it is document APIs, security scanners, agentic workflows, or data pipelines, 
+          I care about clean structure, clear documentation, and knowing what each part of the system is responsible for.
         </p>
         <p class="about-para">
           Currently, I'm gaining practical experience as an <strong>Artificial Intelligence Intern at Sukrit Technologies</strong>, 
@@ -1986,7 +2033,7 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
             <div class="lbl">Projects Contributed</div>
           </div>
           <div class="stat-box">
-            <div class="num">5+</div>
+            <div class="num">6+</div>
             <div class="lbl">Expert Certifications</div>
           </div>
           <div class="stat-box">
@@ -2111,6 +2158,21 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
             <div style="margin-top:8px;">
               <a href="./sukrit-internship-certificate.pdf" target="_blank" rel="noopener noreferrer" style="font-size:12px; color:var(--accent); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
                 View Certificate (PDF) &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-title">Big Data</div>
+            <div class="cert-meta">
+              <span>Samsung Innovation Campus</span>
+              <span>Jan 8, 2026 - Mar 20, 2026</span>
+            </div>
+            <div style="margin-top:8px; font-size:12px; color:var(--text-muted); line-height:1.6;">
+              Completed through Samsung Innovation Campus with Telecom Sector Skill Council and Samsung Southwest Asia.
+            </div>
+            <div style="margin-top:8px;">
+              <a href="./big-data-certificate.jpeg" target="_blank" rel="noopener noreferrer" style="font-size:12px; color:var(--accent); font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                View Certificate (Image) &rarr;
               </a>
             </div>
           </div>
@@ -2594,14 +2656,14 @@ const projects = [
   {
     id:'price-guard',
     title:'Price Guard',
-    subtitle:'E-commerce Price Monitoring & Anomaly Guard',
+    subtitle:'Browser Extension for Price Discrimination Detection',
     emoji:'🛡️',
-    role:'Backend & Data Developer',
-    desc:'Intelligent price tracking and anomaly engine detecting market price fluctuations and map violations in real time.',
-    problem:'E-commerce merchants struggle to continuously track multi-channel price undercutting and unauthorized vendor discounting.',
-    solution:'Engineered automated scraping algorithms and real-time monitoring webhooks with instant alert triggers.',
-    impact:'Prevents revenue leaks, preserves margin integrity, and automates MAP compliance reporting.',
-    tags:['Python', 'FastAPI', 'Web Scraping', 'Data Analytics'],
+    role:'Backend, Extension & Dashboard Development',
+    desc:'Chrome extension and web dashboard that compares the shopper-visible price with a fresh customer-session price.',
+    problem:'Online shoppers may see different prices based on session state, product variant, or browsing context.',
+    solution:'Combined a Chrome extension, React dashboard, FastAPI backend, SQLite storage, JWT auth, and Playwright-based fresh price checks.',
+    impact:'Tracks price history, supports target-price alerts, and highlights meaningful differences while shopping.',
+    tags:['FastAPI', 'React', 'Chrome Extension', 'SQLite', 'Playwright'],
     color:'#f59e0b',
     cats:['Backend', 'Data'],
     github: 'https://github.com/PrabgunMokha/Price-Guard.git'
@@ -2609,14 +2671,14 @@ const projects = [
   {
     id:'axon-core',
     title:'Axon Core',
-    subtitle:'Distributed AI Workflow Orchestrator',
+    subtitle:'Software Integration & Secure Automation Platform',
     emoji:'⚡',
-    role:'AI Infrastructure Developer',
-    desc:'Event-driven microservice core framework for orchestrating asynchronous AI agent tasks and model pipelines.',
-    problem:'Synchronous execution of multi-step AI model workflows creates latency bottlenecks and memory overloads.',
-    solution:'Built an async event-driven task queue with distributed worker dispatch, caching, and fallback retries.',
-    impact:'Significantly reduces multi-agent task latency and guarantees execution fault tolerance.',
-    tags:['Python', 'AsyncIO', 'AI/ML', 'Microservices', 'FastAPI'],
+    role:'Backend & Automation Developer',
+    desc:'Backend-oriented project focused on structured processing, application logic, and secure automation workflows.',
+    problem:'Growing software systems need reliable integration layers that keep data flow, task handling, and operational logic organized.',
+    solution:'Built a modular Python project structure around reusable processing components and automation-focused backend logic.',
+    impact:'Demonstrates practical backend design, secure workflow thinking, and maintainable project organization.',
+    tags:['Python', 'Backend', 'Automation', 'Secure Workflows'],
     color:'#8b5cf6',
     cats:['AI/ML', 'Backend'],
     github: 'https://github.com/PrabgunMokha/Axon-Core.git'
@@ -2641,15 +2703,15 @@ const projects = [
     title:'LangGraph Issue Solver',
     subtitle:'LLM Agent for Repository Issue Resolution',
     emoji:'🤖',
-    role:'AI & Agentic Systems Developer',
-    desc:'Autonomous LLM agent utilizing LangGraph state graphs and LangChain to analyze GitHub issues and automate code resolution.',
-    problem:'Resolving complex repository bug reports requires multi-step context gathering, plan generation, and code editing.',
-    solution:'Engineered an event-driven agentic state machine with automated repository searching, plan validation, and code patching.',
-    impact:'Accelerates software maintenance by automating end-to-end repository issue resolution workflows.',
+    role:'AI Agent Workflow Developer',
+    desc:'LLM-assisted workflow using LangGraph and LangChain concepts to analyze repository issues and guide resolution steps.',
+    problem:'Repository issues often require context gathering, file inspection, reasoning, and a clear fix plan before code changes are safe.',
+    solution:'Modeled the process as an agentic workflow for issue understanding, planning, and patch-oriented assistance.',
+    impact:'Shows hands-on exploration of graph-based AI agents for developer productivity and maintenance workflows.',
     tags:['Python', 'LangGraph', 'LangChain', 'LLMs', 'Agentic AI'],
     color:'#3b82f6',
     cats:['AI/ML', 'Backend'],
-    github: 'https://github.com/PrabgunMokha/LangGraph-Issue-Solver.git'
+    github: 'https://github.com/PrabgunMokha/Langgraph_Issue_Solver.git'
   }
 ];
 
