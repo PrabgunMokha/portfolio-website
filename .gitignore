@@ -2,3 +2,5 @@
 node_modules
 .claude/
 .next/
+
+# Vercel deployment trigger.
