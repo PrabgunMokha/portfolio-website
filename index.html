@@ -68,7 +68,11 @@ html.dark-mode .focus-card,
 html.dark-mode .publication-card,
 html.dark-mode .project-spotlight,
 html.dark-mode .hero-panel,
-html.dark-mode .terminal-card {
+html.dark-mode .terminal-card,
+html.dark-mode .project-lab-hero,
+html.dark-mode .product-tile,
+html.dark-mode .lab-skill-ribbon span,
+html.dark-mode .proj-visual {
   --bg: #0d1117;
   --bg2: #161b22;
   --surface: rgba(22, 27, 34, 0.92);
@@ -92,7 +96,7 @@ html.dark-mode .terminal-card {
   --canvas-star: rgba(139,148, 158, 1);
 }
 
-body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-box, .cert-item, .contact-method, .form-input, .tag, .btn-primary, .btn-outline, .btn-ghost, .skills-block, .about-text-block, .contact-form, .contact-me-panel, .focus-card, .publication-card, .project-spotlight, .hero-panel, .terminal-card {
+body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-box, .cert-item, .contact-method, .form-input, .tag, .btn-primary, .btn-outline, .btn-ghost, .skills-block, .about-text-block, .contact-form, .contact-me-panel, .focus-card, .publication-card, .project-spotlight, .hero-panel, .terminal-card, .project-lab-hero, .product-tile, .skill-node {
   transition: background 0.4s ease, background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -269,11 +273,41 @@ nav.scrolled { padding: 14px 48px; }
 
 /* HERO */
 #hero {
-  min-height: 100vh;
+  min-height: min(100vh, 920px);
   display: flex;
   align-items: center;
   padding: 120px 48px 60px;
   position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(47,128,255,0.16), transparent 34%),
+    linear-gradient(300deg, rgba(0,194,255,0.12), transparent 44%);
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(47,128,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,128,255,0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 84%);
+  pointer-events: none;
+}
+
+#hero::after {
+  content: 'PRABGUN';
+  position: absolute;
+  left: -32px;
+  bottom: 62px;
+  font-family: var(--font-display);
+  font-size: clamp(78px, 15vw, 190px);
+  line-height: 0.8;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(47,128,255,0.045);
+  pointer-events: none;
 }
 
 .hero-inner {
@@ -281,9 +315,11 @@ nav.scrolled { padding: 14px 48px; }
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 80px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  gap: 54px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-tag {
@@ -313,11 +349,12 @@ nav.scrolled { padding: 14px 48px; }
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(52px, 6vw, 88px);
+  font-size: clamp(50px, 5.4vw, 78px);
   font-weight: 800;
-  line-height: 0.95;
+  line-height: 0.9;
   letter-spacing: -3px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  max-width: 590px;
 }
 
 .hero-name em {
@@ -452,9 +489,112 @@ nav.scrolled { padding: 14px 48px; }
 
 /* Hero right panel */
 .hero-panel {
+  min-height: 520px;
+  position: relative;
+  border: 1px solid rgba(47,128,255,0.18);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0,194,255,0.13), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.72), rgba(255,255,255,0.36));
+  box-shadow: var(--shadow-hover);
+  overflow: hidden;
+  padding: 22px;
+}
+
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(47,128,255,0.10);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.hero-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(47,128,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,128,255,0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.skill-map {
+  position: relative;
+  z-index: 1;
+  min-height: 476px;
+  height: 100%;
+}
+
+.skill-map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.skill-node {
+  position: absolute;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255,255,255,0.80);
+  border: 1px solid rgba(47,128,255,0.18);
+  box-shadow: 0 24px 54px rgba(76, 121, 173, 0.16);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.skill-node span {
+  margin-top: 5px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.skill-node.core {
+  left: 50%;
+  top: 50%;
+  width: 156px;
+  height: 156px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  box-shadow: 0 26px 70px rgba(47,128,255,0.30);
+}
+
+.skill-node.core span { color: rgba(255,255,255,0.78); }
+.skill-node.fastapi { left: 26px; top: 50px; }
+.skill-node.rag { right: 34px; top: 44px; }
+.skill-node.security { left: 52px; bottom: 52px; }
+.skill-node.langgraph { right: 50px; bottom: 54px; }
+.skill-node.data { left: 50%; top: 14px; transform: translateX(-50%); }
+
+.mission-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
   gap: 16px;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-stat-card {
@@ -933,7 +1073,23 @@ section {
 .cert-meta span:first-child { color: var(--accent); }
 
 /* PROJECTS */
-#projects { background: transparent; }
+#projects {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(47,128,255,0.08) 42%, transparent 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+#projects::before {
+  content: '';
+  position: absolute;
+  inset: 80px 0 auto;
+  height: 520px;
+  background:
+    linear-gradient(110deg, rgba(47,128,255,0.10), transparent 30%),
+    linear-gradient(250deg, rgba(255,138,91,0.10), transparent 32%);
+  pointer-events: none;
+}
 
 .projects-subtitle {
   font-size: 14px;
@@ -942,6 +1098,130 @@ section {
   margin-bottom: 40px;
   max-width: 600px;
 }
+
+.project-lab-hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  gap: 34px;
+  align-items: center;
+  margin: 0 0 32px;
+  padding: 28px;
+  border: 1px solid rgba(47,128,255,0.14);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(0,194,255,0.14), transparent 24%),
+    linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.54));
+  box-shadow: var(--shadow-soft);
+}
+
+.lab-copy-kicker {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.lab-copy-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.4vw, 58px);
+  line-height: 0.96;
+  letter-spacing: -2px;
+  max-width: 540px;
+}
+
+.lab-copy-text {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.lab-skill-ribbon {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.lab-skill-ribbon span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(47,128,255,0.14);
+  background: rgba(255,255,255,0.78);
+  color: var(--text);
+  font-size: 11px;
+}
+
+.product-wall {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 62px);
+  gap: 10px;
+  min-height: 350px;
+}
+
+.product-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(47,128,255,0.14);
+  background: rgba(255,255,255,0.72);
+  color: var(--text);
+  box-shadow: 0 16px 40px rgba(76, 121, 173, 0.10);
+}
+
+.product-tile::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(47,128,255,0.10);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.product-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, var(--tile-glow, rgba(47,128,255,0.16)), transparent 38%);
+  pointer-events: none;
+}
+
+.product-tile strong,
+.product-tile span {
+  position: relative;
+  z-index: 1;
+}
+
+.product-tile strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.product-tile span {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.product-tile.large { grid-column: span 4; grid-row: span 3; }
+.product-tile.tall { grid-column: span 2; grid-row: span 4; }
+.product-tile.wide { grid-column: span 3; grid-row: span 2; }
+.product-tile.small { grid-column: span 2; grid-row: span 2; }
 
 .filters {
   display: flex;
@@ -961,8 +1241,8 @@ section {
   position: sticky;
   top: 108px;
   background:
-    radial-gradient(circle at top right, rgba(47,128,255,0.18), transparent 34%),
-    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,250,255,0.92));
+    radial-gradient(circle at top right, rgba(0,194,255,0.20), transparent 34%),
+    linear-gradient(160deg, rgba(255,255,255,0.96), rgba(240,247,255,0.82));
   border: 1px solid var(--border);
   border-radius: 28px;
   padding: 28px;
@@ -1155,7 +1435,9 @@ section {
 }
 
 .project-card {
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--proj-color, var(--accent)) 18%, transparent), transparent 24%),
+    var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 32px;
@@ -1180,7 +1462,7 @@ section {
 
 .project-card:hover {
   border-color: var(--border-hover);
-  transform: translateY(-4px);
+  transform: translateY(-7px) rotateX(1deg);
   box-shadow: var(--shadow-hover);
 }
 
@@ -1243,6 +1525,63 @@ section {
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 20px;
+}
+
+.proj-visual {
+  min-height: 106px;
+  margin: 2px 0 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.72), rgba(255,255,255,0.38)),
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--proj-color, var(--accent)) 16%, transparent) 0 2px, transparent 2px 18px);
+  position: relative;
+  overflow: hidden;
+}
+
+.proj-visual::before,
+.proj-visual::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 44%, rgba(255,255,255,0.25));
+}
+
+.proj-visual::before {
+  width: 82px;
+  height: 82px;
+  left: 18px;
+  top: 12px;
+  background: color-mix(in srgb, var(--proj-color, var(--accent)) 14%, rgba(255,255,255,0.50));
+}
+
+.proj-visual::after {
+  width: 150px;
+  height: 150px;
+  right: -32px;
+  bottom: -52px;
+}
+
+.proj-visual-line {
+  position: absolute;
+  left: 88px;
+  right: 22px;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--proj-color, var(--accent)), transparent);
+}
+
+.proj-visual-pill {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.80);
+  color: var(--text);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .proj-tag {
@@ -1856,7 +2195,9 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
 
   #hero { padding: 100px 24px 60px; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero-panel { flex-direction: row; }
+  .hero-panel { min-height: 460px; }
+  .skill-map { min-height: 416px; }
+  .project-lab-hero { grid-template-columns: 1fr; }
 
   section { padding: 80px 24px; }
 
@@ -1884,7 +2225,52 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
 }
 
 @media (max-width: 600px) {
-  .hero-panel { flex-direction: column; }
+  #hero { padding-left: 22px; padding-right: 22px; }
+  .hero-panel { min-height: 560px; padding: 16px; border-radius: 22px; }
+  .skill-map { min-height: 520px; }
+  .hero-name {
+    font-size: 46px;
+    line-height: 0.96;
+    letter-spacing: -1px;
+  }
+  .hero-actions a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+  .skill-node {
+    width: 94px;
+    height: 94px;
+    font-size: 13px;
+  }
+  .skill-node.core {
+    width: 122px;
+    height: 122px;
+  }
+  .skill-node.fastapi { left: 4px; top: 94px; }
+  .skill-node.rag { right: 4px; top: 94px; }
+  .skill-node.data { top: 22px; }
+  .skill-node.security { left: 12px; bottom: 90px; }
+  .skill-node.langgraph { right: 10px; bottom: 90px; }
+  .mission-caption {
+    flex-direction: column;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+  .product-wall {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: 0;
+  }
+  .product-tile,
+  .product-tile.large,
+  .product-tile.tall,
+  .product-tile.wide,
+  .product-tile.small {
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 118px;
+  }
   .stat-row { grid-template-columns: 1fr; }
   .hero-name { letter-spacing: -2px; }
   .mini-proof-grid,
@@ -1928,7 +2314,7 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-tag fade-up">Aspiring Backend & AI Engineer</div>
-      <h1 class="hero-name fade-up">Python Backend<br/><em>AI Engineering Intern</em></h1>
+      <h1 class="hero-name fade-up">Python Backend<br/><em>AI Intern</em></h1>
       <div class="hero-role-wrap fade-up">
         <p class="hero-role" id="typed-role"></p>
         <div class="hero-cursor-blink"></div>
@@ -1961,33 +2347,21 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
     </div>
 
     <div class="hero-panel fade-up">
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span style="background: #ff5f56;"></span>
-            <span style="background: #ffbd2e;"></span>
-            <span style="background: #27c93f;"></span>
-          </div>
-          <div class="terminal-title">bash — 80x24</div>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cmd">ls skills/</span></div>
-          <div class="terminal-line t-output">backend/ ai_agents/ cybersecurity/ ml_ops/</div>
-          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cmd">cat about.txt</span></div>
-          <div class="terminal-line t-output">"Engineering intelligent systems with precision."</div>
-          <div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cursor"></span></div>
-        </div>
-      </div>
-      <div class="mini-proof-grid">
-        <div class="mini-proof-card animated-border">
-          <div class="mini-proof-label">Current Focus</div>
-          <div class="mini-proof-value">FastAPI + AI</div>
-          <div class="mini-proof-copy">Building backend-heavy AI tools with security, data flow, and usability in mind.</div>
-        </div>
-        <div class="mini-proof-card animated-border">
-          <div class="mini-proof-label">Build Style</div>
-          <div class="mini-proof-value">Hands-On</div>
-          <div class="mini-proof-copy">Focused on practical tools, clean APIs, and projects that solve clear problems.</div>
+      <div class="skill-map" aria-label="Connected map of Prabgun's portfolio strengths">
+        <svg viewBox="0 0 520 476" role="img" aria-label="FastAPI, RAG, data, security, and LangGraph connected to Prabgun's builder profile">
+          <path d="M84 96 C210 22 320 26 438 92" fill="none" stroke="rgba(47,128,255,0.28)" stroke-width="1.4"/>
+          <path d="M88 365 C190 244 332 214 440 358" fill="none" stroke="rgba(0,194,255,0.24)" stroke-width="1.4"/>
+          <path d="M104 108 L260 238 L424 104 M260 238 L116 354 M260 238 L410 354 M260 238 L260 80" fill="none" stroke="rgba(47,128,255,0.44)" stroke-width="1.5"/>
+        </svg>
+        <div class="skill-node fastapi">FastAPI<span>backend</span></div>
+        <div class="skill-node rag">RAG<span>AI tooling</span></div>
+        <div class="skill-node data">EDA<span>data proof</span></div>
+        <div class="skill-node security">Security<span>risk scoring</span></div>
+        <div class="skill-node langgraph">LangGraph<span>agents</span></div>
+        <div class="skill-node core">Prabgun<span>builder profile</span></div>
+        <div class="mission-caption">
+          <span>Portfolio signal map</span>
+          <span>Projects + internships + resume</span>
         </div>
       </div>
     </div>
@@ -2216,6 +2590,32 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
     <span class="section-label fade-up">What I've Built</span>
     <h2 class="section-title fade-up">Featured <em>Projects</em></h2>
     <p class="projects-subtitle fade-up">Interactive highlights from projects across AI, backend engineering, cybersecurity, and data workflows.</p>
+
+    <div class="project-lab-hero fade-up">
+      <div>
+        <div class="lab-copy-kicker">Project Lab</div>
+        <div class="lab-copy-title">Every build should feel like a product demo.</div>
+        <p class="lab-copy-text">
+          The portfolio now blends a recruiter snapshot, cinematic visual presence, and product-style project previews, so the work feels built and not just listed.
+        </p>
+        <div class="lab-skill-ribbon" aria-label="Core project skills">
+          <span>Python</span>
+          <span>FastAPI</span>
+          <span>LangChain</span>
+          <span>LangGraph</span>
+          <span>RAG</span>
+          <span>SQL</span>
+          <span>Security</span>
+        </div>
+      </div>
+      <div class="product-wall" aria-label="Visual wall of featured portfolio projects">
+        <div class="product-tile large" style="--tile-glow:rgba(245,158,11,0.22)"><strong>Price Guard</strong><span>price comparison dashboard</span></div>
+        <div class="product-tile tall" style="--tile-glow:rgba(16,185,129,0.22)"><strong>SecureScan AI</strong><span>threat and PII scanner</span></div>
+        <div class="product-tile wide" style="--tile-glow:rgba(59,130,246,0.22)"><strong>LangGraph Issue Solver</strong><span>agentic developer workflow</span></div>
+        <div class="product-tile small" style="--tile-glow:rgba(99,102,241,0.22)"><strong>Fortify Docs API</strong><span>secure file processing</span></div>
+        <div class="product-tile small" style="--tile-glow:rgba(139,92,246,0.22)"><strong>Axon Core</strong><span>backend automation</span></div>
+      </div>
+    </div>
 
     <div class="projects-meta fade-up">
       <div class="projects-meta-card">
@@ -2753,6 +3153,10 @@ function renderProjects() {
           <div class="proj-title">${p.title}</div>
           <div class="proj-subtitle">${p.subtitle}</div>
         </div>
+      </div>
+      <div class="proj-visual" aria-hidden="true">
+        <span class="proj-visual-line"></span>
+        <span class="proj-visual-pill">${p.cats[0]}</span>
       </div>
       <div class="proj-desc">${p.desc}</div>
       <div class="proj-desc">
