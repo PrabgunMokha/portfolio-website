@@ -3193,14 +3193,14 @@ const projects = [
   {
     id:'axon-core',
     title:'Axon Core',
-    subtitle:'Software Integration & Secure Automation Platform',
+    subtitle:'Smart Recruitment Platform',
     emoji:'⚡',
-    role:'Backend & Automation Developer',
-    desc:'Backend-oriented project focused on structured processing, application logic, and secure automation workflows.',
-    problem:'Growing software systems need reliable integration layers that keep data flow, task handling, and operational logic organized.',
-    solution:'Built a modular Python project structure around reusable processing components and automation-focused backend logic.',
-    impact:'Demonstrates practical backend design, secure workflow thinking, and maintainable project organization.',
-    tags:['Python', 'Backend', 'Automation', 'Secure Workflows'],
+    role:'Full-Stack Recruitment Platform Builder',
+    desc:'A smart recruitment platform for browsing jobs, tracking applications, saving roles, posting jobs, and getting assistant-backed career guidance.',
+    problem:'Candidates and employers need clearer job discovery, application tracking, and explainable match signals instead of vague scores.',
+    solution:'Built a full web interface with candidate and employer views, job listings, saved roles, applications, profile tools, and a server-side Gemini proxy for AXON Assistant.',
+    impact:'Shows product thinking across recruitment workflows, UI state, job matching, and secure AI API handling.',
+    tags:['JavaScript', 'Recruitment Platform', 'Gemini API', 'Job Matching', 'UI/UX'],
     color:'#ff5fa2',
     cats:['AI/ML', 'Backend'],
     github: 'https://github.com/PrabgunMokha/Axon-Core.git'
@@ -3309,10 +3309,11 @@ function projectSimulation(project) {
         </div>
       </div>`,
     'axon-core': `
-      <div class="proj-sim" aria-label="Axon Core automation simulation">
-        <div class="sim-top"><span>Integration workflow</span><span class="sim-badge">backend</span></div>
-        <div class="sim-flow active-flow"><div class="sim-node">Input</div><div class="sim-node">Processor</div><div class="sim-node">Action</div></div>
-        <div class="sim-terminal"><span class="typing">workflow.execute()</span><br><strong>status: complete</strong></div>
+      <div class="proj-sim" aria-label="Axon Core recruitment matching simulation">
+        <div class="sim-top"><span>Candidate job discovery</span><span class="sim-badge">match engine</span></div>
+        <div class="sim-flow active-flow"><div class="sim-node">Profile</div><div class="sim-node">Job Match</div><div class="sim-node">Apply</div></div>
+        <div class="sim-row"><span>Backend Engineer - Remote</span><strong>High Match</strong></div>
+        <div class="sim-terminal"><span class="typing">AXON Assistant explains fit...</span><br><strong>Saved -> Applied -> Tracked</strong></div>
       </div>`,
     'orion-client-lifecycle-ai': `
       <div class="proj-sim" aria-label="Orion churn scoring simulation">
