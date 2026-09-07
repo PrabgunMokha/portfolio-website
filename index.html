@@ -273,7 +273,7 @@ nav.scrolled { padding: 14px 48px; }
 
 /* HERO */
 #hero {
-  min-height: min(100vh, 920px);
+  min-height: min(100vh, 820px);
   display: flex;
   align-items: center;
   padding: 120px 48px 60px;
@@ -306,7 +306,7 @@ nav.scrolled { padding: 14px 48px; }
   line-height: 0.8;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: rgba(47,128,255,0.045);
+  color: rgba(47,128,255,0.026);
   pointer-events: none;
 }
 
@@ -316,7 +316,7 @@ nav.scrolled { padding: 14px 48px; }
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
-  gap: 54px;
+  gap: 48px;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -349,7 +349,7 @@ nav.scrolled { padding: 14px 48px; }
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(50px, 5.4vw, 78px);
+  font-size: clamp(50px, 5.2vw, 74px);
   font-weight: 800;
   line-height: 0.9;
   letter-spacing: -3px;
@@ -393,7 +393,7 @@ nav.scrolled { padding: 14px 48px; }
   color: var(--text-muted);
   max-width: 540px;
   line-height: 1.8;
-  margin-bottom: 44px;
+  margin-bottom: 34px;
 }
 
 .hero-bio strong { color: var(--text); font-weight: 500; }
@@ -489,7 +489,7 @@ nav.scrolled { padding: 14px 48px; }
 
 /* Hero right panel */
 .hero-panel {
-  min-height: 520px;
+  min-height: 470px;
   position: relative;
   border: 1px solid rgba(47,128,255,0.18);
   border-radius: 30px;
@@ -525,7 +525,7 @@ nav.scrolled { padding: 14px 48px; }
 .skill-map {
   position: relative;
   z-index: 1;
-  min-height: 476px;
+  min-height: 426px;
   height: 100%;
 }
 
@@ -1528,53 +1528,35 @@ section {
 }
 
 .proj-visual {
-  min-height: 106px;
+  min-height: 126px;
   margin: 2px 0 18px;
   border-radius: 16px;
   border: 1px solid var(--border);
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.72), rgba(255,255,255,0.38)),
-    repeating-linear-gradient(135deg, color-mix(in srgb, var(--proj-color, var(--accent)) 16%, transparent) 0 2px, transparent 2px 18px);
+    linear-gradient(90deg, rgba(255,255,255,0.82), rgba(255,255,255,0.46)),
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--proj-color, var(--accent)) 24%, transparent), transparent 36%);
   position: relative;
   overflow: hidden;
-}
-
-.proj-visual::before,
-.proj-visual::after {
-  content: '';
-  position: absolute;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 44%, rgba(255,255,255,0.25));
+  padding: 14px;
+  display: grid;
+  align-content: stretch;
 }
 
 .proj-visual::before {
-  width: 82px;
-  height: 82px;
-  left: 18px;
-  top: 12px;
-  background: color-mix(in srgb, var(--proj-color, var(--accent)) 14%, rgba(255,255,255,0.50));
-}
-
-.proj-visual::after {
-  width: 150px;
-  height: 150px;
-  right: -32px;
-  bottom: -52px;
-}
-
-.proj-visual-line {
+  content: '';
   position: absolute;
-  left: 88px;
-  right: 22px;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--proj-color, var(--accent)), transparent);
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(47,128,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47,128,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
 }
 
 .proj-visual-pill {
   position: absolute;
-  right: 18px;
-  top: 18px;
+  right: 12px;
+  top: 12px;
   padding: 7px 10px;
   border-radius: 999px;
   background: rgba(255,255,255,0.80);
@@ -1582,6 +1564,115 @@ section {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.demo-screen {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  height: 100%;
+}
+
+.demo-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.66);
+  border: 1px solid rgba(47,128,255,0.10);
+  color: var(--text);
+  font-size: 10px;
+}
+
+.demo-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(47,128,255,0.10);
+  overflow: hidden;
+}
+
+.demo-bar span {
+  display: block;
+  height: 100%;
+  width: var(--w, 62%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--proj-color, var(--accent)), var(--accent2));
+}
+
+.demo-flow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  align-items: center;
+  height: 100%;
+}
+
+.demo-node {
+  min-height: 62px;
+  border-radius: 14px;
+  border: 1px solid rgba(47,128,255,0.12);
+  background: rgba(255,255,255,0.68);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8px;
+  color: var(--text);
+  font-size: 10px;
+}
+
+.demo-scan {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+  height: 100%;
+}
+
+.scan-doc,
+.scan-panel {
+  border-radius: 12px;
+  border: 1px solid rgba(47,128,255,0.12);
+  background: rgba(255,255,255,0.68);
+  padding: 10px;
+}
+
+.scan-line {
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(47,128,255,0.12);
+  margin-bottom: 8px;
+}
+
+.scan-hit {
+  height: 18px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--proj-color, var(--accent)) 18%, rgba(255,255,255,0.62));
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 34%, transparent);
+  margin-bottom: 8px;
+}
+
+.demo-mini-chart {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: end;
+  height: 100%;
+  padding-top: 26px;
+}
+
+.demo-mini-chart span {
+  border-radius: 9px 9px 0 0;
+  height: var(--h, 60%);
+  background: linear-gradient(180deg, var(--proj-color, var(--accent)), rgba(255,255,255,0.44));
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 26%, transparent);
 }
 
 .proj-tag {
@@ -2404,15 +2495,15 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
         <div class="stat-row">
           <div class="stat-box">
             <div class="num">10</div>
-            <div class="lbl">Projects Contributed</div>
+            <div class="lbl">Projects Built</div>
           </div>
           <div class="stat-box">
             <div class="num">6+</div>
-            <div class="lbl">Expert Certifications</div>
+            <div class="lbl">Certifications Earned</div>
           </div>
           <div class="stat-box">
             <div class="num">16+</div>
-            <div class="lbl">Security Patterns Explored</div>
+            <div class="lbl">Security Checks Explored</div>
           </div>
           <div class="stat-box">
             <div class="num">1</div>
@@ -2630,7 +2721,7 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
       </div>
       <div class="projects-meta-card">
         <div class="projects-meta-label">Selected Build</div>
-        <div class="projects-meta-value" id="selected-project-label">CyberTwin</div>
+        <div class="projects-meta-value" id="selected-project-label">Price Guard</div>
         <div class="projects-meta-copy">Click any card to update the live project spotlight.</div>
       </div>
     </div>
@@ -2648,13 +2739,13 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
         <div class="spotlight-kicker">Live Project Spotlight</div>
         <div class="spotlight-title-row">
           <div>
-            <div class="spotlight-title" id="spotlight-title">CyberTwin</div>
-            <div class="spotlight-subtitle" id="spotlight-subtitle">Network Intelligence Platform</div>
+            <div class="spotlight-title" id="spotlight-title">Price Guard</div>
+            <div class="spotlight-subtitle" id="spotlight-subtitle">Browser Extension for Price Discrimination Detection</div>
           </div>
-          <div class="spotlight-emoji" id="spotlight-emoji">C</div>
+          <div class="spotlight-emoji" id="spotlight-emoji">PG</div>
         </div>
-        <div class="spotlight-role" id="spotlight-role">Backend & Security Aspirant</div>
-        <p class="spotlight-desc" id="spotlight-desc">A digital twin project for real-time network threat detection.</p>
+        <div class="spotlight-role" id="spotlight-role">Backend, Extension & Dashboard Development</div>
+        <p class="spotlight-desc" id="spotlight-desc">Chrome extension and web dashboard that compares shopper-visible prices with fresh customer-session prices.</p>
 
         <div class="spotlight-metrics">
           <div class="spotlight-metric">
@@ -2974,6 +3065,7 @@ const projects = [
     solution:'Built a FastAPI backend integrating ML inference on the UNSW-NB15 dataset.',
     impact:'Capable of identifying 10 attack categories with live playbooks.',
     tags:['Python','PostgreSQL','ML/AI'],
+    demo:'scan',
     color:'#ef4444',
     cats:['AI/ML','Backend','Cybersecurity'],
     github: 'https://github.com/Aaram-Over-Kaam/Cybertwin.git'
@@ -2989,6 +3081,7 @@ const projects = [
     solution:'Utilized YOLO for classification and PaddleOCR for data extraction.',
     impact:'Supports 5 major Indian ID types with automated validation.',
     tags:['FastAPI','YOLO','PaddleOCR','Python','OCR'],
+    demo:'document',
     color:'#6366f1',
     cats:['AI/ML','Backend'],
     github: 'https://github.com/PrabgunMokha/Fortify-Docs-API.git'
@@ -3004,6 +3097,7 @@ const projects = [
     solution:'Developed a scanning engine for 16+ threat patterns and risk scoring.',
     impact:'Real-time risk assessment and remediation reporting.',
     tags:['Python','Regex','Cybersecurity'],
+    demo:'scan',
     color:'#10b981',
     cats:['Cybersecurity'],
     github: 'https://github.com/PrabgunMokha/securescans-ai.git'
@@ -3019,6 +3113,7 @@ const projects = [
     solution:'Implemented Spark for data cleaning, feature extraction (engagement scores), and Parquet/CSV export.',
     impact:'Transforms raw event data into structured features for downstream recommendation algorithms.',
     tags:['Apache Spark','Python','PySpark','Data Engineering'],
+    demo:'chart',
     color:'#06b6d4',
     cats:['Data'],
     github: 'https://github.com/PrabgunMokha/ecommerce-recommendation-system.git'
@@ -3034,6 +3129,7 @@ const projects = [
     solution:'Developed a Tkinter GUI with a semaphore-controlled thread pool to scan port ranges concurrently.',
     impact:'Provides a visual, interactive tool for network reconnaissance and security auditing, identifying common services.',
     tags:['Python','Tkinter','Networking','Threading'],
+    demo:'flow',
     color:'#ec4899',
     cats:['Cybersecurity'],
     github: 'https://github.com/PrabgunMokha/Network-Port-Scanner-GUI.git'
@@ -3049,6 +3145,7 @@ const projects = [
     solution:'Developed a FastAPI backend to handle AES encryption/decryption, PDF/image protection, and timed auto-deletion of temporary files.',
     impact:'Ensures confidential data remains protected while offering flexible, temporary access.',
     tags:['FastAPI', 'Python', 'AES Encryption', 'PyPDF2'],
+    demo:'document',
     color:'#f59e0b',
     cats:['Backend', 'Cybersecurity'],
     github: 'https://github.com/PrabgunMokha/File-Reader.git'
@@ -3064,6 +3161,7 @@ const projects = [
     solution:'Combined a Chrome extension, React dashboard, FastAPI backend, SQLite storage, JWT auth, and Playwright-based fresh price checks.',
     impact:'Tracks price history, supports target-price alerts, and highlights meaningful differences while shopping.',
     tags:['FastAPI', 'React', 'Chrome Extension', 'SQLite', 'Playwright'],
+    demo:'price',
     color:'#f59e0b',
     cats:['Backend', 'Data'],
     github: 'https://github.com/PrabgunMokha/Price-Guard.git'
@@ -3079,6 +3177,7 @@ const projects = [
     solution:'Built a modular Python project structure around reusable processing components and automation-focused backend logic.',
     impact:'Demonstrates practical backend design, secure workflow thinking, and maintainable project organization.',
     tags:['Python', 'Backend', 'Automation', 'Secure Workflows'],
+    demo:'flow',
     color:'#8b5cf6',
     cats:['AI/ML', 'Backend'],
     github: 'https://github.com/PrabgunMokha/Axon-Core.git'
@@ -3094,6 +3193,7 @@ const projects = [
     solution:'Developed predictive churn scoring pipelines, behavioral feature extractors, and automated engagement recommendations.',
     impact:'Provides actionable retention alerts to proactively boost client lifetime value (LTV).',
     tags:['Python', 'Scikit-Learn', 'Pandas', 'AI/ML', 'Data Science'],
+    demo:'chart',
     color:'#06b6d4',
     cats:['AI/ML', 'Data'],
     github: 'https://github.com/PrabgunMokha/orion-client-lifecycle-ai-.git'
@@ -3109,6 +3209,7 @@ const projects = [
     solution:'Modeled the process as an agentic workflow for issue understanding, planning, and patch-oriented assistance.',
     impact:'Shows hands-on exploration of graph-based AI agents for developer productivity and maintenance workflows.',
     tags:['Python', 'LangGraph', 'LangChain', 'LLMs', 'Agentic AI'],
+    demo:'agent',
     color:'#3b82f6',
     cats:['AI/ML', 'Backend'],
     github: 'https://github.com/PrabgunMokha/Langgraph_Issue_Solver.git'
@@ -3116,7 +3217,7 @@ const projects = [
 ];
 
 let activeFilter = 'All';
-let selectedProjectId = projects[0].id;
+let selectedProjectId = 'price-guard';
 
 function updateProjectSpotlight(project) {
   document.getElementById('spotlight-title').textContent = project.title;
@@ -3130,6 +3231,104 @@ function updateProjectSpotlight(project) {
   document.getElementById('spotlight-link').href = project.github;
   document.getElementById('selected-project-label').textContent = project.title;
   document.getElementById('spotlight-tags').innerHTML = project.tags.map(tag => `<span class="proj-tag">${tag}</span>`).join('');
+}
+
+function projectDemo(project) {
+  const type = project.demo || 'flow';
+  const category = project.cats[0];
+
+  if (type === 'price') {
+    return `
+      <div class="proj-visual demo-price" aria-hidden="true">
+        <span class="proj-visual-pill">${category}</span>
+        <div class="demo-screen">
+          <div class="demo-row"><span>Visible price</span><strong>₹1,499</strong></div>
+          <div class="demo-row"><span>Fresh session</span><strong>₹1,299</strong></div>
+          <div class="demo-bar"><span style="--w:82%"></span></div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (type === 'scan') {
+    return `
+      <div class="proj-visual demo-threat" aria-hidden="true">
+        <span class="proj-visual-pill">${category}</span>
+        <div class="demo-scan">
+          <div class="scan-doc">
+            <div class="scan-line" style="width:92%"></div>
+            <div class="scan-line" style="width:78%"></div>
+            <div class="scan-hit" style="width:68%"></div>
+            <div class="scan-line" style="width:86%"></div>
+          </div>
+          <div class="scan-panel">
+            <div class="scan-hit" style="width:82%"></div>
+            <div class="scan-hit" style="width:58%"></div>
+            <div class="scan-line" style="width:72%"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (type === 'document') {
+    return `
+      <div class="proj-visual demo-docs" aria-hidden="true">
+        <span class="proj-visual-pill">${category}</span>
+        <div class="demo-scan">
+          <div class="scan-doc">
+            <div class="scan-line" style="width:54%"></div>
+            <div class="scan-line" style="width:88%"></div>
+            <div class="scan-line" style="width:72%"></div>
+            <div class="scan-hit" style="width:46%"></div>
+          </div>
+          <div class="scan-panel">
+            <div class="demo-row"><span>OCR</span><strong>OK</strong></div>
+            <div class="demo-row"><span>API</span><strong>200</strong></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (type === 'chart') {
+    return `
+      <div class="proj-visual demo-chart" aria-hidden="true">
+        <span class="proj-visual-pill">${category}</span>
+        <div class="demo-mini-chart">
+          <span style="--h:42%"></span>
+          <span style="--h:68%"></span>
+          <span style="--h:54%"></span>
+          <span style="--h:86%"></span>
+          <span style="--h:72%"></span>
+        </div>
+      </div>
+    `;
+  }
+
+  if (type === 'agent') {
+    return `
+      <div class="proj-visual demo-agent" aria-hidden="true">
+        <span class="proj-visual-pill">${category}</span>
+        <div class="demo-flow">
+          <div class="demo-node">Issue</div>
+          <div class="demo-node">Plan</div>
+          <div class="demo-node">Patch</div>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="proj-visual demo-flow-card" aria-hidden="true">
+      <span class="proj-visual-pill">${category}</span>
+      <div class="demo-flow">
+        <div class="demo-node">Input</div>
+        <div class="demo-node">Process</div>
+        <div class="demo-node">Output</div>
+      </div>
+    </div>
+  `;
 }
 
 function renderProjects() {
@@ -3154,10 +3353,7 @@ function renderProjects() {
           <div class="proj-subtitle">${p.subtitle}</div>
         </div>
       </div>
-      <div class="proj-visual" aria-hidden="true">
-        <span class="proj-visual-line"></span>
-        <span class="proj-visual-pill">${p.cats[0]}</span>
-      </div>
+      ${projectDemo(p)}
       <div class="proj-desc">${p.desc}</div>
       <div class="proj-desc">
         <p><strong>Challenge:</strong> ${p.problem}</p>
