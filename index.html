@@ -69,7 +69,7 @@ html.dark-mode .publication-card,
 html.dark-mode .project-spotlight,
 html.dark-mode .hero-panel,
 html.dark-mode .terminal-card,
-html.dark-mode .proj-screenshot-wrap {
+html.dark-mode .proj-sim {
   --bg: #101411;
   --bg2: #181c17;
   --surface: rgba(28, 33, 28, 0.92);
@@ -93,7 +93,7 @@ html.dark-mode .proj-screenshot-wrap {
   --canvas-star: rgba(202,255,103, 1);
 }
 
-body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-box, .cert-item, .contact-method, .form-input, .tag, .btn-primary, .btn-outline, .btn-ghost, .skills-block, .about-text-block, .contact-form, .contact-me-panel, .focus-card, .publication-card, .project-spotlight, .hero-panel, .terminal-card, .skill-node, .proj-screenshot-wrap {
+body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-box, .cert-item, .contact-method, .form-input, .tag, .btn-primary, .btn-outline, .btn-ghost, .skills-block, .about-text-block, .contact-form, .contact-me-panel, .focus-card, .publication-card, .project-spotlight, .hero-panel, .terminal-card, .skill-node, .proj-sim {
   transition: background 0.4s ease, background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -1400,41 +1400,161 @@ section {
   margin-bottom: 20px;
 }
 
-.proj-screenshot-wrap {
+.proj-sim {
   margin: 2px 0 18px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: rgba(39,45,38,0.78);
+  background:
+    radial-gradient(circle at 16% 18%, color-mix(in srgb, var(--proj-color, var(--accent)) 18%, transparent), transparent 30%),
+    linear-gradient(145deg, rgba(12, 15, 13, 0.94), rgba(35, 41, 34, 0.92));
   overflow: hidden;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
-}
-
-.proj-screenshot {
-  display: block;
-  width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top left;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  position: relative;
 }
 
-.spotlight-shot {
-  display: none;
+.proj-sim::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(202,255,103,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202,255,103,0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.55;
+}
+
+.proj-sim > * {
+  position: relative;
+  z-index: 1;
+}
+
+.sim-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sim-badge {
+  color: #101411;
+  background: linear-gradient(135deg, var(--proj-color, var(--accent)), var(--accent3));
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-weight: 700;
+}
+
+.sim-row,
+.sim-card,
+.sim-node {
+  border: 1px solid rgba(203,255,156,0.14);
+  background: rgba(39,45,38,0.76);
+  border-radius: 10px;
+  color: var(--text);
+}
+
+.sim-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  font-size: 12px;
+}
+
+.sim-row strong { color: var(--proj-color, var(--accent)); }
+
+.sim-bars {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: end;
+  min-height: 82px;
+}
+
+.sim-bars span {
+  height: var(--h, 50%);
+  border-radius: 8px 8px 2px 2px;
+  background: linear-gradient(180deg, var(--proj-color, var(--accent)), rgba(255,180,84,0.35));
+  animation: simPulse 2.4s ease-in-out infinite;
+}
+
+.sim-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.sim-node {
+  min-height: 54px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sim-scan {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 10px;
+  min-height: 92px;
+}
+
+.sim-card {
+  padding: 10px;
+  display: grid;
+  gap: 7px;
+}
+
+.sim-line {
+  height: 7px;
+  border-radius: 999px;
+  width: var(--w, 80%);
+  background: rgba(203,255,156,0.16);
+}
+
+.sim-hit {
+  height: 18px;
+  border-radius: 999px;
+  width: var(--w, 64%);
+  background: color-mix(in srgb, var(--proj-color, var(--accent)) 34%, rgba(39,45,38,0.82));
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 56%, transparent);
+  animation: simGlow 1.8s ease-in-out infinite;
+}
+
+.sim-terminal {
+  min-height: 92px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(7, 10, 8, 0.78);
+  border: 1px solid rgba(203,255,156,0.14);
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.sim-terminal strong { color: var(--proj-color, var(--accent)); }
+
+.spotlight-sim {
   margin: 0 0 18px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: rgba(39,45,38,0.78);
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.24);
 }
 
-.spotlight-shot.visible { display: block; }
+@keyframes simPulse {
+  0%, 100% { transform: scaleY(0.78); opacity: 0.72; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
 
-.spotlight-shot img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top left;
+@keyframes simGlow {
+  0%, 100% { filter: brightness(0.9); }
+  50% { filter: brightness(1.25); }
 }
 
 .proj-tag {
@@ -2429,7 +2549,7 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
     <div class="projects-meta fade-up">
       <div class="projects-meta-card">
         <div class="projects-meta-label">Portfolio Snapshot</div>
-        <div class="projects-meta-value" id="project-count">6 Projects</div>
+        <div class="projects-meta-value" id="project-count">9 Projects</div>
         <div class="projects-meta-copy">A compact set of work focused on real functionality, not placeholder demos.</div>
       </div>
       <div class="projects-meta-card">
@@ -2464,7 +2584,7 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
         </div>
         <div class="spotlight-role" id="spotlight-role">Security Tool Builder</div>
         <p class="spotlight-desc" id="spotlight-desc">Dashboard for scanning PII and security threats in data.</p>
-        <div class="spotlight-shot" id="spotlight-shot"></div>
+        <div class="spotlight-sim" id="spotlight-sim"></div>
 
         <div class="spotlight-metrics">
           <div class="spotlight-metric">
@@ -2814,25 +2934,9 @@ const projects = [
     solution:'Developed a scanning engine for 16+ threat patterns and risk scoring.',
     impact:'Real-time risk assessment and remediation reporting.',
     tags:['Python','Regex','Cybersecurity'],
-    screenshot:'project-demos/securescan-ai.png',
     color:'#10b981',
     cats:['Cybersecurity'],
     github: 'https://github.com/PrabgunMokha/securescans-ai.git'
-  },
-  {
-    id:'ecommerce',
-    title:'E-commerce Data Pipeline',
-    subtitle:'Big Data Processing with Apache Spark',
-    emoji:'E',
-    role:'Data Engineering',
-    desc:'An Apache Spark-powered end-to-end big data pipeline for e-commerce event data.',
-    problem:'Handling large volumes of e-commerce data requires robust processing and feature engineering.',
-    solution:'Implemented Spark for data cleaning, feature extraction (engagement scores), and Parquet/CSV export.',
-    impact:'Transforms raw event data into structured features for downstream recommendation algorithms.',
-    tags:['Apache Spark','Python','PySpark','Data Engineering'],
-    color:'#ffb454',
-    cats:['Data'],
-    github: 'https://github.com/PrabgunMokha/ecommerce-recommendation-system.git'
   },
   {
     id:'portscan-gui',
@@ -2875,7 +2979,6 @@ const projects = [
     solution:'Combined a Chrome extension, React dashboard, FastAPI backend, SQLite storage, JWT auth, and Playwright-based fresh price checks.',
     impact:'Tracks price history, supports target-price alerts, and highlights meaningful differences while shopping.',
     tags:['FastAPI', 'React', 'Chrome Extension', 'SQLite', 'Playwright'],
-    screenshot:'project-demos/price-guard.png',
     color:'#f59e0b',
     cats:['Backend', 'Data'],
     github: 'https://github.com/PrabgunMokha/Price-Guard.git'
@@ -2921,7 +3024,6 @@ const projects = [
     solution:'Modeled the process as an agentic workflow for issue understanding, planning, and patch-oriented assistance.',
     impact:'Shows hands-on exploration of graph-based AI agents for developer productivity and maintenance workflows.',
     tags:['Python', 'LangGraph', 'LangChain', 'LLMs', 'Agentic AI'],
-    screenshot:'project-demos/langgraph-issue-solver.png',
     color:'#77f0bd',
     cats:['AI/ML', 'Backend'],
     github: 'https://github.com/PrabgunMokha/Langgraph_Issue_Solver.git'
@@ -2932,7 +3034,6 @@ let activeFilter = 'All';
 let selectedProjectId = 'securescans';
 
 function updateProjectSpotlight(project) {
-  const spotlightShot = document.getElementById('spotlight-shot');
   document.getElementById('spotlight-title').textContent = project.title;
   document.getElementById('spotlight-subtitle').textContent = project.subtitle;
   document.getElementById('spotlight-emoji').textContent = project.emoji;
@@ -2944,29 +3045,76 @@ function updateProjectSpotlight(project) {
   document.getElementById('spotlight-link').href = project.github;
   document.getElementById('selected-project-label').textContent = project.title;
   document.getElementById('spotlight-tags').innerHTML = project.tags.map(tag => `<span class="proj-tag">${tag}</span>`).join('');
-  if (project.screenshot) {
-    spotlightShot.innerHTML = `<img src="${project.screenshot}" alt="${project.title} working screenshot" loading="lazy">`;
-    spotlightShot.classList.add('visible');
-  } else {
-    spotlightShot.innerHTML = '';
-    spotlightShot.classList.remove('visible');
-  }
+  document.getElementById('spotlight-sim').innerHTML = projectSimulation(project);
 }
 
-function projectScreenshot(project) {
-  if (!project.screenshot) return '';
-  return `
-    <div class="proj-screenshot-wrap">
-      <img class="proj-screenshot" src="${project.screenshot}" alt="${project.title} working screenshot" loading="lazy">
-    </div>
-  `;
+function projectSimulation(project) {
+  const templates = {
+    cybertwin: `
+      <div class="proj-sim" aria-label="CyberTwin network threat simulation">
+        <div class="sim-top"><span>UNSW-NB15 traffic stream</span><span class="sim-badge">10 attack classes</span></div>
+        <div class="sim-scan">
+          <div class="sim-card"><div class="sim-line" style="--w:92%"></div><div class="sim-hit" style="--w:76%"></div><div class="sim-line" style="--w:68%"></div><div class="sim-hit" style="--w:54%"></div></div>
+          <div class="sim-card"><div class="sim-row"><span>Risk</span><strong>High</strong></div><div class="sim-row"><span>Playbook</span><strong>Ready</strong></div></div>
+        </div>
+      </div>`,
+    'fortify-docs-api': `
+      <div class="proj-sim" aria-label="Fortify Docs OCR pipeline simulation">
+        <div class="sim-top"><span>ID document upload</span><span class="sim-badge">YOLO + OCR</span></div>
+        <div class="sim-flow"><div class="sim-node">Classify ID</div><div class="sim-node">Extract Text</div><div class="sim-node">Validate Fields</div></div>
+        <div class="sim-row"><span>Aadhaar / PAN / Passport fields</span><strong>JSON</strong></div>
+      </div>`,
+    securescans: `
+      <div class="proj-sim" aria-label="SecureScan threat scan simulation">
+        <div class="sim-top"><span>Pasted logs and configs</span><span class="sim-badge">16 patterns</span></div>
+        <div class="sim-scan">
+          <div class="sim-card"><div class="sim-line" style="--w:88%"></div><div class="sim-hit" style="--w:68%"></div><div class="sim-line" style="--w:76%"></div><div class="sim-hit" style="--w:48%"></div></div>
+          <div class="sim-card"><div class="sim-row"><span>Critical</span><strong>10</strong></div><div class="sim-row"><span>Risk score</span><strong>100</strong></div></div>
+        </div>
+      </div>`,
+    'portscan-gui': `
+      <div class="proj-sim" aria-label="Nmap port scanner simulation">
+        <div class="sim-top"><span>Target 192.168.1.12</span><span class="sim-badge">threads</span></div>
+        <div class="sim-terminal"><strong>22/tcp open</strong> ssh<br><strong>80/tcp open</strong> http<br>443/tcp filtered<br><strong>3306/tcp open</strong> mysql</div>
+      </div>`,
+    'file-reader': `
+      <div class="proj-sim" aria-label="Secure file reader simulation">
+        <div class="sim-top"><span>Protected file request</span><span class="sim-badge">AES</span></div>
+        <div class="sim-flow"><div class="sim-node">Password</div><div class="sim-node">Decrypt</div><div class="sim-node">Auto-delete</div></div>
+        <div class="sim-row"><span>Temporary access window</span><strong>Active</strong></div>
+      </div>`,
+    'price-guard': `
+      <div class="proj-sim" aria-label="Price Guard comparison simulation">
+        <div class="sim-top"><span>Shopping session check</span><span class="sim-badge">Playwright</span></div>
+        <div class="sim-row"><span>Visible price</span><strong>INR 1,499</strong></div>
+        <div class="sim-row"><span>Fresh-session price</span><strong>INR 1,299</strong></div>
+        <div class="sim-row"><span>Status</span><strong>Difference observed</strong></div>
+      </div>`,
+    'axon-core': `
+      <div class="proj-sim" aria-label="Axon Core automation simulation">
+        <div class="sim-top"><span>Integration workflow</span><span class="sim-badge">backend</span></div>
+        <div class="sim-flow"><div class="sim-node">Input</div><div class="sim-node">Processor</div><div class="sim-node">Action</div></div>
+        <div class="sim-terminal">task.validate()<br><strong>workflow.execute()</strong><br>status: complete</div>
+      </div>`,
+    'orion-client-lifecycle-ai': `
+      <div class="proj-sim" aria-label="Orion churn scoring simulation">
+        <div class="sim-top"><span>Client lifecycle signals</span><span class="sim-badge">ML score</span></div>
+        <div class="sim-bars"><span style="--h:38%"></span><span style="--h:64%"></span><span style="--h:46%"></span><span style="--h:82%"></span><span style="--h:58%"></span></div>
+        <div class="sim-row"><span>Retention alert</span><strong>High churn risk</strong></div>
+      </div>`,
+    'langgraph-issue-solver': `
+      <div class="proj-sim" aria-label="LangGraph issue solver agent simulation">
+        <div class="sim-top"><span>GitHub issue route</span><span class="sim-badge">LangGraph</span></div>
+        <div class="sim-flow"><div class="sim-node">Researcher</div><div class="sim-node">Coder</div><div class="sim-node">Tester</div></div>
+        <div class="sim-terminal">Supervisor -> CODE<br><strong>pytest: rerun after patch</strong><br>route -> FINISH</div>
+      </div>`
+  };
+  return templates[project.id] || '';
 }
 
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
-  const visible = (activeFilter === 'All' ? projects : projects.filter(p => p.cats.includes(activeFilter)))
-    .slice()
-    .sort((a, b) => Number(Boolean(b.screenshot)) - Number(Boolean(a.screenshot)));
+  const visible = activeFilter === 'All' ? projects : projects.filter(p => p.cats.includes(activeFilter));
   const selectedVisibleProject = visible.find(project => project.id === selectedProjectId) || visible[0];
 
   if (selectedVisibleProject) {
@@ -2986,7 +3134,7 @@ function renderProjects() {
           <div class="proj-subtitle">${p.subtitle}</div>
         </div>
       </div>
-      ${projectScreenshot(p)}
+      ${projectSimulation(p)}
       <div class="proj-desc">${p.desc}</div>
       <div class="proj-desc">
         <p><strong>Challenge:</strong> ${p.problem}</p>
