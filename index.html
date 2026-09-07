@@ -1409,7 +1409,7 @@ section {
     linear-gradient(145deg, rgba(12, 15, 13, 0.94), rgba(35, 41, 34, 0.92));
   overflow: hidden;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
-  aspect-ratio: 16 / 10;
+  min-height: 210px;
   padding: 16px;
   display: grid;
   gap: 10px;
@@ -1545,6 +1545,213 @@ section {
 
 .spotlight-sim {
   margin: 0 0 18px;
+}
+
+.sim-stage {
+  min-height: 132px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sim-network {
+  position: relative;
+  min-height: 128px;
+}
+
+.sim-orbit {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(203,255,156,0.16);
+  border-radius: 50%;
+}
+
+.sim-core-dot,
+.sim-node-dot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 50%, transparent);
+  background: rgba(20,24,21,0.92);
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sim-core-dot {
+  width: 58px;
+  height: 58px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--proj-color, var(--accent)) 38%, transparent);
+}
+
+.sim-node-dot {
+  width: 42px;
+  height: 42px;
+}
+
+.sim-node-dot.n1 { left: 10%; top: 18%; }
+.sim-node-dot.n2 { right: 9%; top: 14%; }
+.sim-node-dot.n3 { left: 16%; bottom: 10%; }
+.sim-node-dot.n4 { right: 16%; bottom: 12%; }
+
+.sim-packet {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--proj-color, var(--accent));
+  box-shadow: 0 0 18px var(--proj-color, var(--accent));
+  animation: packetMove 3s linear infinite;
+}
+
+.sim-packet.p2 { animation-delay: -1s; }
+.sim-packet.p3 { animation-delay: -2s; }
+
+.sim-sweep {
+  position: absolute;
+  left: -30%;
+  top: 0;
+  width: 34%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--proj-color, var(--accent)) 38%, transparent), transparent);
+  animation: sweepAcross 2.4s ease-in-out infinite;
+}
+
+.sim-doc-card {
+  position: relative;
+  min-height: 124px;
+  border-radius: 12px;
+  border: 1px solid rgba(203,255,156,0.14);
+  background: rgba(39,45,38,0.76);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.sim-doc-card .sim-sweep {
+  width: 42%;
+  animation-duration: 2.1s;
+}
+
+.sim-chip-row {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.sim-chip {
+  padding: 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(203,255,156,0.14);
+  background: rgba(12,15,13,0.72);
+  color: var(--text-muted);
+  font-size: 10px;
+  animation: chipPop 3s ease-in-out infinite;
+}
+
+.sim-chip:nth-child(2) { animation-delay: .35s; }
+.sim-chip:nth-child(3) { animation-delay: .7s; }
+
+.sim-meter {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(203,255,156,0.14);
+  overflow: hidden;
+}
+
+.sim-meter span {
+  display: block;
+  height: 100%;
+  width: 72%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--proj-color, var(--accent)), var(--accent2));
+  animation: meterScan 2.6s ease-in-out infinite;
+}
+
+.sim-terminal .typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  animation: typeLine 3.2s steps(28) infinite;
+}
+
+.sim-flow.active-flow .sim-node {
+  animation: routeStep 3.6s ease-in-out infinite;
+}
+
+.sim-flow.active-flow .sim-node:nth-child(2) { animation-delay: .45s; }
+.sim-flow.active-flow .sim-node:nth-child(3) { animation-delay: .9s; }
+
+.sim-price-stack {
+  display: grid;
+  gap: 9px;
+}
+
+.sim-price-stack .sim-row {
+  transform-origin: left center;
+  animation: priceCompare 3s ease-in-out infinite;
+}
+
+.sim-price-stack .sim-row:nth-child(3) { animation-delay: .45s; }
+.sim-price-stack .sim-row:nth-child(4) { animation-delay: .9s; }
+
+.sim-lock {
+  width: 52px;
+  height: 52px;
+  margin: auto;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--proj-color, var(--accent)) 42%, transparent);
+  background: rgba(12,15,13,0.72);
+  animation: lockPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes packetMove {
+  0% { left: 13%; top: 22%; opacity: 0; }
+  12% { opacity: 1; }
+  38% { left: 50%; top: 50%; }
+  68% { left: 84%; top: 25%; }
+  100% { left: 84%; top: 25%; opacity: 0; }
+}
+
+@keyframes sweepAcross {
+  0% { transform: translateX(0); opacity: 0; }
+  15%, 75% { opacity: 1; }
+  100% { transform: translateX(380%); opacity: 0; }
+}
+
+@keyframes chipPop {
+  0%, 24%, 100% { transform: translateY(0); border-color: rgba(203,255,156,0.14); }
+  38% { transform: translateY(-3px); border-color: var(--proj-color, var(--accent)); }
+}
+
+@keyframes meterScan {
+  0%, 100% { width: 28%; }
+  50% { width: 86%; }
+}
+
+@keyframes typeLine {
+  0% { max-width: 0; }
+  60%, 100% { max-width: 240px; }
+}
+
+@keyframes routeStep {
+  0%, 100% { transform: translateY(0); border-color: rgba(203,255,156,0.14); }
+  30% { transform: translateY(-5px); border-color: var(--proj-color, var(--accent)); box-shadow: 0 0 18px color-mix(in srgb, var(--proj-color, var(--accent)) 25%, transparent); }
+}
+
+@keyframes priceCompare {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+
+@keyframes lockPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { transform: scale(1.08); box-shadow: 0 0 26px color-mix(in srgb, var(--proj-color, var(--accent)) 30%, transparent); }
 }
 
 @keyframes simPulse {
@@ -3053,59 +3260,70 @@ function projectSimulation(project) {
     cybertwin: `
       <div class="proj-sim" aria-label="CyberTwin network threat simulation">
         <div class="sim-top"><span>UNSW-NB15 traffic stream</span><span class="sim-badge">10 attack classes</span></div>
-        <div class="sim-scan">
-          <div class="sim-card"><div class="sim-line" style="--w:92%"></div><div class="sim-hit" style="--w:76%"></div><div class="sim-line" style="--w:68%"></div><div class="sim-hit" style="--w:54%"></div></div>
-          <div class="sim-card"><div class="sim-row"><span>Risk</span><strong>High</strong></div><div class="sim-row"><span>Playbook</span><strong>Ready</strong></div></div>
+        <div class="sim-stage sim-network">
+          <div class="sim-orbit"></div>
+          <div class="sim-node-dot n1">PC</div><div class="sim-node-dot n2">API</div><div class="sim-node-dot n3">DB</div><div class="sim-node-dot n4">ML</div>
+          <div class="sim-core-dot">RISK</div>
+          <span class="sim-packet"></span><span class="sim-packet p2"></span><span class="sim-packet p3"></span>
         </div>
+        <div class="sim-row"><span>Threat route detected</span><strong>Playbook ready</strong></div>
       </div>`,
     'fortify-docs-api': `
       <div class="proj-sim" aria-label="Fortify Docs OCR pipeline simulation">
         <div class="sim-top"><span>ID document upload</span><span class="sim-badge">YOLO + OCR</span></div>
-        <div class="sim-flow"><div class="sim-node">Classify ID</div><div class="sim-node">Extract Text</div><div class="sim-node">Validate Fields</div></div>
-        <div class="sim-row"><span>Aadhaar / PAN / Passport fields</span><strong>JSON</strong></div>
+        <div class="sim-doc-card">
+          <div class="sim-sweep"></div>
+          <div class="sim-line" style="--w:44%"></div><div class="sim-line" style="--w:86%"></div><div class="sim-hit" style="--w:58%"></div><div class="sim-line" style="--w:72%"></div>
+        </div>
+        <div class="sim-chip-row"><span class="sim-chip">classify</span><span class="sim-chip">extract</span><span class="sim-chip">validate JSON</span></div>
       </div>`,
     securescans: `
       <div class="proj-sim" aria-label="SecureScan threat scan simulation">
         <div class="sim-top"><span>Pasted logs and configs</span><span class="sim-badge">16 patterns</span></div>
-        <div class="sim-scan">
-          <div class="sim-card"><div class="sim-line" style="--w:88%"></div><div class="sim-hit" style="--w:68%"></div><div class="sim-line" style="--w:76%"></div><div class="sim-hit" style="--w:48%"></div></div>
-          <div class="sim-card"><div class="sim-row"><span>Critical</span><strong>10</strong></div><div class="sim-row"><span>Risk score</span><strong>100</strong></div></div>
+        <div class="sim-doc-card">
+          <div class="sim-sweep"></div>
+          <div class="sim-line" style="--w:91%"></div><div class="sim-hit" style="--w:64%"></div><div class="sim-line" style="--w:78%"></div><div class="sim-hit" style="--w:50%"></div>
         </div>
+        <div class="sim-row"><span>Risk score rising</span><strong>Critical</strong></div>
       </div>`,
     'portscan-gui': `
       <div class="proj-sim" aria-label="Nmap port scanner simulation">
         <div class="sim-top"><span>Target 192.168.1.12</span><span class="sim-badge">threads</span></div>
-        <div class="sim-terminal"><strong>22/tcp open</strong> ssh<br><strong>80/tcp open</strong> http<br>443/tcp filtered<br><strong>3306/tcp open</strong> mysql</div>
+        <div class="sim-terminal"><span class="typing">scan --ports 1-1024 --threads 24</span><br><strong>22/tcp open</strong> ssh<br><strong>80/tcp open</strong> http<br>443/tcp filtered</div>
+        <div class="sim-meter"><span></span></div>
       </div>`,
     'file-reader': `
       <div class="proj-sim" aria-label="Secure file reader simulation">
         <div class="sim-top"><span>Protected file request</span><span class="sim-badge">AES</span></div>
-        <div class="sim-flow"><div class="sim-node">Password</div><div class="sim-node">Decrypt</div><div class="sim-node">Auto-delete</div></div>
-        <div class="sim-row"><span>Temporary access window</span><strong>Active</strong></div>
+        <div class="sim-flow active-flow"><div class="sim-node">Password</div><div class="sim-node"><span class="sim-lock">LOCK</span></div><div class="sim-node">Auto-delete</div></div>
+        <div class="sim-meter"><span></span></div>
       </div>`,
     'price-guard': `
       <div class="proj-sim" aria-label="Price Guard comparison simulation">
         <div class="sim-top"><span>Shopping session check</span><span class="sim-badge">Playwright</span></div>
-        <div class="sim-row"><span>Visible price</span><strong>INR 1,499</strong></div>
-        <div class="sim-row"><span>Fresh-session price</span><strong>INR 1,299</strong></div>
-        <div class="sim-row"><span>Status</span><strong>Difference observed</strong></div>
+        <div class="sim-price-stack">
+          <div class="sim-row"><span>Visible price</span><strong>INR 1,499</strong></div>
+          <div class="sim-row"><span>Fresh-session price</span><strong>INR 1,299</strong></div>
+          <div class="sim-meter"><span></span></div>
+          <div class="sim-row"><span>Status</span><strong>Difference observed</strong></div>
+        </div>
       </div>`,
     'axon-core': `
       <div class="proj-sim" aria-label="Axon Core automation simulation">
         <div class="sim-top"><span>Integration workflow</span><span class="sim-badge">backend</span></div>
-        <div class="sim-flow"><div class="sim-node">Input</div><div class="sim-node">Processor</div><div class="sim-node">Action</div></div>
-        <div class="sim-terminal">task.validate()<br><strong>workflow.execute()</strong><br>status: complete</div>
+        <div class="sim-flow active-flow"><div class="sim-node">Input</div><div class="sim-node">Processor</div><div class="sim-node">Action</div></div>
+        <div class="sim-terminal"><span class="typing">workflow.execute()</span><br><strong>status: complete</strong></div>
       </div>`,
     'orion-client-lifecycle-ai': `
       <div class="proj-sim" aria-label="Orion churn scoring simulation">
         <div class="sim-top"><span>Client lifecycle signals</span><span class="sim-badge">ML score</span></div>
-        <div class="sim-bars"><span style="--h:38%"></span><span style="--h:64%"></span><span style="--h:46%"></span><span style="--h:82%"></span><span style="--h:58%"></span></div>
+        <div class="sim-bars"><span style="--h:38%; animation-delay:-.2s"></span><span style="--h:64%; animation-delay:-.7s"></span><span style="--h:46%; animation-delay:-1.1s"></span><span style="--h:82%; animation-delay:-.4s"></span><span style="--h:58%; animation-delay:-1.5s"></span></div>
         <div class="sim-row"><span>Retention alert</span><strong>High churn risk</strong></div>
       </div>`,
     'langgraph-issue-solver': `
       <div class="proj-sim" aria-label="LangGraph issue solver agent simulation">
         <div class="sim-top"><span>GitHub issue route</span><span class="sim-badge">LangGraph</span></div>
-        <div class="sim-flow"><div class="sim-node">Researcher</div><div class="sim-node">Coder</div><div class="sim-node">Tester</div></div>
+        <div class="sim-flow active-flow"><div class="sim-node">Researcher</div><div class="sim-node">Coder</div><div class="sim-node">Tester</div></div>
         <div class="sim-terminal">Supervisor -> CODE<br><strong>pytest: rerun after patch</strong><br>route -> FINISH</div>
       </div>`
   };
