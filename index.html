@@ -248,6 +248,8 @@
     .case-link { margin-top: 46px; width: max-content; display: inline-flex; align-items: center; gap: 14px; font-size: 13px; font-weight: 700; }
     .case-link::after { content: ""; width: 48px; height: 1px; background: var(--case); transition: width .3s var(--ease); }
     .case-link:hover::after { width: 78px; }
+    .case-actions { margin-top: 46px; display: flex; flex-wrap: wrap; gap: 22px 30px; }
+    .case-actions .case-link { margin-top: 0; }
     .case-visual {
       position: relative;
       min-height: 580px;
@@ -476,7 +478,7 @@
           <div class="eyebrow">Selected work / 02</div>
           <h2>Systems<br>in motion.</h2>
         </div>
-        <p class="aside">Five projects where the hard part was not making a demo. It was making all the pieces work together.</p>
+        <p class="aside">Six projects where the hard part was not making a demo. It was making all the pieces work together.</p>
       </div>
 
       <article class="case reveal" style="--case:#ff5a72">
@@ -570,6 +572,28 @@
           <div class="window">
             <div class="window-bar"><i></i><i></i><i></i><span class="window-title">Agent execution graph</span></div>
             <div class="visual-grid"><div class="visual-nav"><b></b><span></span><span></span><span></span><span></span></div><div class="visual-main"><div class="visual-kicker">Repository / understood</div><h4>Issues become executable plans.</h4><p>Context gathering, reasoning, and repair in a graph-based workflow.</p><div class="scan-line"></div><div class="chart"><i style="--h:28%"></i><i style="--h:48%"></i><i style="--h:68%"></i><i style="--h:39%"></i><i style="--h:77%"></i><i style="--h:96%"></i><i style="--h:57%"></i></div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case reveal" id="pulseform" style="--case:#c9ff68">
+        <div class="case-meta">
+          <span class="case-no">06 / Generative music</span>
+          <div>
+            <div class="case-role">Machine learning and interaction design</div>
+            <h3>PulseForm</h3>
+            <p class="case-copy">An interactive browser studio for shaping generative tracks by style, mood, tempo, energy, chaos, and seed. Behind it, a Python pipeline converts Bach chorales into pitch-duration tokens, trains a PyTorch LSTM, and exports playable MIDI compositions.</p>
+            <div class="case-tags"><span>PyTorch</span><span>LSTM</span><span>music21</span><span>MIDI</span><span>Web Audio</span></div>
+            <div class="case-actions">
+              <a class="case-link" href="https://pulseform-1.netlify.app/" target="_blank" rel="noopener">Open live studio</a>
+              <a class="case-link" href="https://github.com/PrabgunMokha/pulse-form.git" target="_blank" rel="noopener">Explore repository</a>
+            </div>
+          </div>
+        </div>
+        <div class="case-visual" aria-hidden="true">
+          <div class="window">
+            <div class="window-bar"><i></i><i></i><i></i><span class="window-title">LSTM music system / ready</span></div>
+            <div class="visual-grid"><div class="visual-nav"><b></b><span></span><span></span><span></span><span></span></div><div class="visual-main"><div class="visual-kicker">Compose / model output</div><h4>Make noise with a trained melody.</h4><p>Six styles, three moods, and endless seeded variations.</p><div class="chart"><i style="--h:72%"></i><i style="--h:28%"></i><i style="--h:88%"></i><i style="--h:45%"></i><i style="--h:63%"></i><i style="--h:94%"></i><i style="--h:36%"></i><i style="--h:78%"></i><i style="--h:52%"></i><i style="--h:86%"></i><i style="--h:31%"></i><i style="--h:68%"></i><i style="--h:97%"></i><i style="--h:43%"></i><i style="--h:74%"></i><i style="--h:58%"></i></div></div></div>
           </div>
         </div>
       </article>
