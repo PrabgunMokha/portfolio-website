@@ -2447,6 +2447,449 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
   .project-spotlight,
   .project-card { padding: 24px; }
 }
+
+/* FASTERUI / TUBELIGHT / 3D STUDIO REDESIGN */
+:root,
+html.dark-mode,
+html.dark-mode body {
+  --bg: #05050b;
+  --bg2: #090914;
+  --surface: rgba(12, 14, 28, 0.72);
+  --surface2: rgba(21, 25, 48, 0.76);
+  --surface-strong: #101323;
+  --border: rgba(180, 199, 255, 0.16);
+  --border-hover: rgba(136, 245, 255, 0.58);
+  --text: #f7f8ff;
+  --text-muted: #b9c2df;
+  --text-dim: #77809e;
+  --accent: #8bf7ff;
+  --accent2: #b46cff;
+  --accent3: #ffcf66;
+  --accent4: #65ffa6;
+  --accent-glow: rgba(139,247,255,0.22);
+  --shadow-soft: 0 22px 70px rgba(0,0,0,0.34);
+  --shadow-hover: 0 30px 90px rgba(0,0,0,0.48);
+  --canvas-orb1: rgba(139,247,255,0.14);
+  --canvas-orb2: rgba(180,108,255,0.15);
+  --canvas-orb3: rgba(255,207,102,0.09);
+  --canvas-star: rgba(139,247,255,1);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(139,247,255,0.16), transparent 26%),
+    radial-gradient(circle at 78% 8%, rgba(180,108,255,0.20), transparent 28%),
+    radial-gradient(circle at 52% 78%, rgba(255,207,102,0.10), transparent 30%),
+    linear-gradient(180deg, #05050b 0%, #0a0a16 46%, #050611 100%);
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#bg-canvas,
+#cursor-canvas {
+  width: 100vw;
+  max-width: 100%;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 17%, rgba(139,247,255,0.08) 17.2% 17.8%, transparent 18% 47%, rgba(180,108,255,0.08) 47.2% 47.9%, transparent 48%),
+    linear-gradient(65deg, transparent 0 61%, rgba(255,207,102,0.055) 61.2% 61.8%, transparent 62%);
+  opacity: 0.9;
+}
+
+nav {
+  width: min(1120px, calc(100% - 32px));
+  left: 50%;
+  right: auto;
+  top: 18px;
+  transform: translateX(-50%);
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  background: rgba(8, 10, 23, 0.70);
+  box-shadow: 0 18px 80px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+nav.scrolled {
+  padding: 10px 18px;
+}
+
+.nav-logo,
+.footer-brand {
+  color: var(--text);
+  text-shadow: 0 0 24px rgba(139,247,255,0.48);
+}
+
+.nav-logo span,
+.footer-brand span,
+.section-title em,
+.hero-name em {
+  background: linear-gradient(110deg, #8bf7ff 0%, #b46cff 48%, #ffcf66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#hero {
+  min-height: min(100vh, 900px);
+  background:
+    linear-gradient(128deg, rgba(139,247,255,0.10), transparent 28%),
+    radial-gradient(circle at 72% 40%, rgba(180,108,255,0.18), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%);
+}
+
+#hero::before {
+  background-image:
+    linear-gradient(rgba(139,247,255,0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180,108,255,0.075) 1px, transparent 1px);
+  background-size: 54px 54px;
+}
+
+#hero::after {
+  content: 'AI STUDIO';
+  color: rgba(255,255,255,0.025);
+  text-shadow: 0 0 70px rgba(139,247,255,0.08);
+}
+
+.hero-inner {
+  max-width: 1240px;
+  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
+}
+
+.hero-tag,
+.section-label {
+  color: #8bf7ff;
+  background: rgba(139,247,255,0.08);
+  border: 1px solid rgba(139,247,255,0.18);
+  border-radius: 999px;
+  padding: 8px 12px;
+  width: fit-content;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 26px rgba(139,247,255,0.10);
+}
+
+.hero-name {
+  font-size: clamp(54px, 6.1vw, 92px);
+  line-height: 0.86;
+  max-width: 680px;
+}
+
+.hero-bio,
+.projects-subtitle,
+.contact-desc,
+.about-para {
+  color: #c7cee6;
+}
+
+.btn-primary,
+.form-submit {
+  color: #041018;
+  border: 0;
+  background: linear-gradient(120deg, #8bf7ff, #b46cff 58%, #ffcf66);
+  box-shadow: 0 16px 44px rgba(139,247,255,0.28), inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+.btn-primary:hover,
+.form-submit:hover {
+  background: linear-gradient(120deg, #9effff, #c788ff 58%, #ffe09d);
+  box-shadow: 0 22px 58px rgba(180,108,255,0.35);
+}
+
+.btn-outline,
+.btn-ghost,
+.filter-btn {
+  background: rgba(255,255,255,0.045);
+  border-color: rgba(255,255,255,0.13);
+  color: var(--text);
+  backdrop-filter: blur(18px);
+}
+
+.btn-outline:hover,
+.btn-ghost:hover,
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: rgba(139,247,255,0.55);
+  box-shadow: 0 0 34px rgba(139,247,255,0.16);
+}
+
+.recruiter-pill,
+.about-text-block,
+.skills-block,
+.focus-card,
+.publication-card,
+.project-spotlight,
+.project-card,
+.edu-card,
+.stat-box,
+.cert-item,
+.contact-me-panel,
+.contact-form,
+.contact-method,
+.projects-meta-card,
+.proj-sim {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)) padding-box,
+    linear-gradient(135deg, rgba(139,247,255,0.34), rgba(180,108,255,0.16), rgba(255,207,102,0.22)) border-box;
+  border: 1px solid transparent;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+
+.sim-doc-card,
+.proj-sim,
+.spotlight-sim,
+.projects-grid {
+  overflow: hidden;
+}
+
+.hero-panel {
+  min-height: 540px;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 30% 16%, rgba(139,247,255,0.30), transparent 22%),
+    radial-gradient(circle at 74% 36%, rgba(180,108,255,0.34), transparent 29%),
+    linear-gradient(145deg, rgba(255,255,255,0.10), rgba(11,13,27,0.72));
+  box-shadow:
+    0 38px 120px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.13),
+    0 0 90px rgba(139,247,255,0.12);
+}
+
+.hero-panel::before {
+  inset: 18px;
+  border-color: rgba(255,255,255,0.13);
+}
+
+.hero-panel::after {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+}
+
+.studio-orbit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  perspective: 800px;
+}
+
+.tube {
+  position: absolute;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(139,247,255,0.92), rgba(180,108,255,0.88), transparent);
+  filter: blur(0.2px) drop-shadow(0 0 18px rgba(139,247,255,0.8));
+  opacity: 0.74;
+  transform-origin: center;
+  animation: tube-drift 7s ease-in-out infinite;
+}
+
+.tube-a { width: 340px; left: -44px; top: 76px; transform: rotate(-24deg); }
+.tube-b { width: 420px; right: -80px; top: 236px; animation-delay: -2s; transform: rotate(31deg); }
+.tube-c { width: 300px; left: 124px; bottom: 76px; animation-delay: -4s; transform: rotate(8deg); }
+
+.shape {
+  position: absolute;
+  display: block;
+  opacity: 0.85;
+  transform-style: preserve-3d;
+  animation: studio-float 8s ease-in-out infinite;
+}
+
+.shape-cube {
+  width: 86px;
+  height: 86px;
+  right: 72px;
+  top: 72px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(139,247,255,0.85), rgba(180,108,255,0.64));
+  box-shadow: 0 28px 70px rgba(139,247,255,0.28), inset -14px -16px 30px rgba(5,5,11,0.34);
+  transform: rotateX(58deg) rotateZ(32deg);
+}
+
+.shape-pill {
+  width: 58px;
+  height: 154px;
+  left: 54px;
+  bottom: 84px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,207,102,0.94), rgba(180,108,255,0.34));
+  box-shadow: 0 26px 60px rgba(255,207,102,0.20);
+  animation-delay: -2.8s;
+}
+
+.shape-ring {
+  width: 118px;
+  height: 118px;
+  right: 118px;
+  bottom: 66px;
+  border-radius: 50%;
+  border: 16px solid rgba(139,247,255,0.58);
+  box-shadow: 0 0 42px rgba(139,247,255,0.32), inset 0 0 28px rgba(180,108,255,0.22);
+  animation-delay: -5s;
+}
+
+.skill-map {
+  z-index: 1;
+  filter: drop-shadow(0 22px 50px rgba(0,0,0,0.30));
+}
+
+.skill-map svg path {
+  stroke: rgba(139,247,255,0.34);
+  filter: drop-shadow(0 0 10px rgba(139,247,255,0.35));
+}
+
+.skill-node {
+  background:
+    radial-gradient(circle at 30% 18%, rgba(255,255,255,0.34), transparent 28%),
+    linear-gradient(145deg, rgba(139,247,255,0.90), rgba(180,108,255,0.78));
+  color: #05050b;
+  border: 1px solid rgba(255,255,255,0.36);
+  box-shadow: 0 22px 54px rgba(0,0,0,0.32), 0 0 38px rgba(139,247,255,0.22);
+}
+
+.skill-node span {
+  color: rgba(5,5,11,0.72);
+}
+
+.mission-caption {
+  background: rgba(5,7,18,0.62);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.34);
+  backdrop-filter: blur(16px);
+}
+
+.section-title {
+  letter-spacing: 0;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: min(280px, 42vw);
+  height: 3px;
+  margin-top: 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8bf7ff, #b46cff, transparent);
+  box-shadow: 0 0 24px rgba(139,247,255,0.44);
+}
+
+#projects {
+  background:
+    linear-gradient(180deg, rgba(139,247,255,0.035), rgba(180,108,255,0.045)),
+    transparent;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+}
+
+.project-card::before {
+  height: 100%;
+  background:
+    linear-gradient(120deg, transparent, color-mix(in srgb, var(--proj-color, var(--accent)) 26%, transparent), transparent);
+  opacity: 0;
+  transform: translateX(-110%);
+}
+
+.project-card:hover::before,
+.project-card.active::before {
+  opacity: 1;
+  transform: translateX(110%);
+}
+
+.proj-emoji,
+.edu-icon,
+.contact-method-icon {
+  color: #05050b;
+  background: linear-gradient(135deg, #8bf7ff, #b46cff 62%, #ffcf66) !important;
+  box-shadow: 0 12px 34px rgba(139,247,255,0.24);
+}
+
+.proj-tag,
+.tag,
+.sim-chip,
+.sim-badge {
+  color: #dfe6ff;
+  background: rgba(139,247,255,0.075);
+  border-color: rgba(139,247,255,0.18);
+}
+
+.skill-fill,
+.sim-meter span {
+  background: linear-gradient(90deg, #8bf7ff, #b46cff, #ffcf66);
+}
+
+.terminal-card,
+.sim-terminal {
+  background: rgba(2, 5, 14, 0.80);
+  border-color: rgba(139,247,255,0.16);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.terminal-header {
+  background: rgba(255,255,255,0.07);
+}
+
+.t-user { color: #8bf7ff; }
+.t-cursor { background: #8bf7ff; }
+
+@keyframes studio-float {
+  0%, 100% { translate: 0 0; rotate: 0deg; }
+  50% { translate: 0 -18px; rotate: 5deg; }
+}
+
+@keyframes tube-drift {
+  0%, 100% { opacity: 0.48; filter: drop-shadow(0 0 14px rgba(139,247,255,0.58)); }
+  50% { opacity: 0.94; filter: drop-shadow(0 0 28px rgba(180,108,255,0.82)); }
+}
+
+@media (max-width: 960px) {
+  nav {
+    top: 12px;
+    width: min(calc(100% - 24px), 680px);
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-name {
+    font-size: clamp(42px, 15vw, 56px);
+  }
+
+  .tube-b {
+    right: -180px;
+  }
+
+  .shape-cube,
+  .shape-ring {
+    opacity: 0.56;
+  }
+}
 </style>
 </head>
 <body class="dark-mode">
@@ -2509,6 +2952,14 @@ body, nav, .hero-stat-card, .mini-proof-card, .project-card, .edu-card, .stat-bo
     </div>
 
     <div class="hero-panel fade-up">
+      <div class="studio-orbit" aria-hidden="true">
+        <span class="tube tube-a"></span>
+        <span class="tube tube-b"></span>
+        <span class="tube tube-c"></span>
+        <span class="shape shape-cube"></span>
+        <span class="shape shape-pill"></span>
+        <span class="shape shape-ring"></span>
+      </div>
       <div class="skill-map" aria-label="Connected map of Prabgun's portfolio strengths">
         <svg viewBox="0 0 520 476" role="img" aria-label="FastAPI, RAG, data, security, and LangGraph connected to Prabgun's builder profile">
           <path d="M84 96 C210 22 320 26 438 92" fill="none" stroke="rgba(202,255,103,0.28)" stroke-width="1.4"/>
@@ -3071,10 +3522,12 @@ function runTerminal() {
   setTimeout(typeCmd, 500);
 }
 
-setTimeout(() => {
-  terminalBody.innerHTML = '<div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cursor"></span></div>';
-  runTerminal();
-}, 1000);
+if (terminalBody) {
+  setTimeout(() => {
+    terminalBody.innerHTML = '<div class="terminal-line"><span class="t-user">guest@prabgun:~$</span> <span class="t-cursor"></span></div>';
+    runTerminal();
+  }, 1000);
+}
 
 // NAV SCROLL
 const navbar = document.getElementById('navbar');
